@@ -1,0 +1,23 @@
+#options-spacing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.option-container {
+  height: 450px;
+  width: 550px;
+  border: 1px black solid;
+  background-color: grey;
+  text-align: center;
+}
+
+#sign-in {
+  font-size: 2.5em;
+
+}
+
+#register {
+  font-size: 2.5em;
+}
+
