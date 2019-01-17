@@ -8,7 +8,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 170px);
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: #287add; 
+  height: 100px;
+  font-family: 'Satisfy', cursive;
+  font-size: 4rem;
+  opacity: 0.5;
+  align-items: center;
 }
 
 .option-container {
@@ -17,14 +29,48 @@
   background-color: #287add;
   text-align: center;
   border-radius: 20px;
+  margin: 20px;
+  opacity: 0.9;
+}
+.option-container:hover {
+  opacity: 0.8;
+  border: 3px gold solid;
+  transition: 0.5s;
 }
 
 #sign-in {
+  margin: 20px;
   font-size: 2.5em;
-
+  color: white;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #register {
+  margin: 20px;
   font-size: 2.5em;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
 }
 
+.button-styling {
+  border: none;
+  height: 40px;
+  width: 75px;
+  background-color: white;
+  color: #287add;
+  border-radius: 20px;
+  margin: 0 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
+}
+.button-styling:hover {
+  background-color:rgb(228, 228, 228);
+  border: 2px gold solid;
+  cursor: pointer;
+}
+
+
+@media(max-width: 775px) {
+  #header {
+    font-size: 3rem;
+  }
+}

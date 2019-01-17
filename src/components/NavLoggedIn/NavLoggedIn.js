@@ -20,11 +20,11 @@ class NavLoggedIn extends Component {
     console.log(this.props)
     return (
       <div id='nav-spacing'>
-        <img src={logo} alt='HMRX logo' height={60}/>
+        <img src={logo} alt='HMRX logo' className='logo'/>
         <div>
            
           <div>
-            <span>{`Welcome, ${this.props.user.name}`}</span>
+            <span id='welcome'>{`Welcome, ${this.props.user.name}`}</span>
             <a href='http://localhost:4321/auth/logout'>
               <button className='button-styling'>Log Out</button>
             </a>

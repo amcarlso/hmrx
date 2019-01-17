@@ -11,7 +11,7 @@ export function getUserData(userInfo) {
     payload: userInfo
   }
 }
-// export function moveEmployeeData()
+
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {

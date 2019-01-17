@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+
 module.exports = {
   getAllEmployees: (req, res) => {
     const db = req.app.get('db');
@@ -26,7 +27,7 @@ module.exports = {
       db.add_employee_info({userId: userId, image: image, salary: salary, position: position, employerId: employerId})
       .then( response2 => {
         userInfo = {...userInfo, ...response2[0]}  // ... OR... userInfo = Object.assign({}, userInfo, response[0])
-        res.status(200).send(userInfo)
+        res.status(200).send({userInfo: userInfo, session: req.session.user})
         // console.log(userInfo)
         console.log(response2[0])
       })

@@ -19,7 +19,7 @@ body {
 .button-styling {
   border: none;
   height: 40px;
-  width: 70px;
+  width: 75px;
   background-color: white;
   color: #287add;
   border-radius: 20px;
@@ -28,5 +28,10 @@ body {
 }
 .button-styling:hover {
   background-color:rgb(228, 228, 228);
+  border: 2px gold solid;
   cursor: pointer;
+}
+
+.logo {
+  height: 80px;
 }

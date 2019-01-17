@@ -22,9 +22,7 @@ export default class EmployeeDetails extends Component {
   componentDidMount() {
     this.getEmployeeInfo()  
   }
-  componentDidUpdate() {
-    
-  }
+  
   handleToggleEdit() {
     const {editClicked} = this.state;
     if(!editClicked) {
@@ -41,7 +39,7 @@ export default class EmployeeDetails extends Component {
     })
   }
   editSalary(editedSalary) {
-    axios.post(`/api/employees/${this.props.match.params.employeeid}`, {salary: editedSalary})
+    axios.put(`/api/employees/${this.props.match.params.employeeid}`, {salary: editedSalary})
     .then( res => {
       console.log({message: `Here's ${res.data.name}'s updated salary: ${res.data.salary}/hour`})
     });
@@ -53,6 +51,7 @@ export default class EmployeeDetails extends Component {
   }
 
   render(){
+    console.log(this.props)
     const {editClicked, salaryInput} = this.state;
     const { name, username, email, image_url, position, salary } = this.state.employeeInfo;
     return(

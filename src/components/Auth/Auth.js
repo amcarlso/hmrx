@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Auth.css'
 import axios from 'axios';
 import Nav from '../Nav/Nav';
+import {connect} from 'react-redux';
 
 export default class Auth extends Component {
   constructor(props) {
@@ -33,12 +34,16 @@ export default class Auth extends Component {
     } else if (res.data.loggedIn) {
       this.props.history.push(`/employee/:${res.data.userData.id}`)
     }
+    console.log(res.data)
   }
 
   render(){
     return(
     <div id='background'>
       <Nav />
+      <div id='header'>
+        <h1>Human Resources simplified</h1>
+      </div>
       <div id='options-spacing'>
         <div className='option-container'>
         <p id='sign-in'>Sign In</p>
@@ -46,9 +51,9 @@ export default class Auth extends Component {
         <br/>
         <input placeholder='password' onChange={(e) => this.setState({loginPassword: e.target.value})} type='password' />
         <br/>
-        <button onClick={() => this.login()}>Enter</button>
+        <button className='button-styling' onClick={() => this.login()}>Enter</button>
         </div>
-        <span>Or...</span>
+
         <div className='option-container'>
           <p id='register'>Register</p>
           <input placeholder='name' onChange={(e) => this.setState({regName: e.target.value})} />
@@ -59,7 +64,7 @@ export default class Auth extends Component {
           <br/>
           <input placeholder='password' onChange={(e) => this.setState({regPassword: e.target.value})} type='password' />
           <br/>
-          <button onClick={() => this.register()}>Register</button>
+          <button className='button-styling' onClick={() => this.register()}>Register</button>
         </div>
       </div>
     </div>

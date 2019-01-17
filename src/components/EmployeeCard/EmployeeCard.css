@@ -6,6 +6,12 @@
   background-color: #287add;
   margin: 10px 5px;
   border-radius: 15px;
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.2);
+}
+#card-container:hover {
+  border: 2px gold solid;
+  opacity: 0.8;
+  transition: 0.3s;
 }
 
 #card-content-style {
@@ -23,7 +29,7 @@
 }
 
 #image-style {
-  height: 190px;
+  height: 170px;
 }
 
 #delete-style {
@@ -36,4 +42,8 @@
 
 #delete-style:hover {
   color: lightgray;
+}
+
+.link-style {
+  text-decoration: none;
 }
