@@ -1,13 +1,16 @@
 const bcrypt = require('bcryptjs');
+const {EMAIL, PASSWORD, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER} = process.env
 const nodemailer = require('nodemailer');
+const client = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+require('dotenv').config();
 
 
 module.exports = {
   register: async (req, res) => {
-    const {name, username, password, email} = req.body;
+    const {name, username, password, phone, email} = req.body;
     const db = req.app.get('db');
     const userUsername = await db.find_user_username({username: username});
-    // 
+    // NODEMAILER
     nodemailer.createTestAccount((err, account) => {
       const htmlEmail = `
         <h3>Contact Details</h3>
@@ -18,25 +21,22 @@ module.exports = {
         <h3>Message</h3>
         <p>Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees</p>
       `
-
       const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
+        host: 'smtp-mail.outlook.com',
         port: 587,
         auth: {
-            user: 'fi7ct2cjoifdsfcj@ethereal.email',
-            pass: 'xmQrWxuJa8M9gHtSHf'
+            user: EMAIL,
+            pass: PASSWORD
         }
       });
-
       let mailOptions = {
-        from: 'fi7ct2cjoifdsfcj@ethereal.email',
-        to: `${email}`,
-        replyTo: 'fi7ct2cjoifdsfcj@ethereal.email',
+        from: EMAIL,
+        to: email,
+        replyTo: EMAIL,
         subject: 'New Message',
         text: 'Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees',
         html: htmlEmail
       }
-
       transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
           return console.log(err)
@@ -45,13 +45,27 @@ module.exports = {
         }
       })
     })
-    // 
+    //
+    
+    //TWILIO
+    client.messages
+    .create({
+      from: TWILIO_PHONE_NUMBER,
+      to: `+1${phone}`,
+      body: 'Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees'
+    })
+    .then(res => {
+      console.log(res)
+    })
+    
+    //
+
     if(userUsername.length >= 1) {
       res.status(200).send({message: 'username already in use'})
     }
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-    const newUserArr = await db.new_boss({name: name, username: username, hash: hash, email: email});
+    const newUserArr = await db.new_boss({name: name, username: username, hash: hash, email: email, phone: phone});
     req.session.user = {
       id: newUserArr[0].id,
       name: newUserArr[0].username,

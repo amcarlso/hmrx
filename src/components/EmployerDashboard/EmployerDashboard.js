@@ -4,9 +4,9 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
 import './EmployerDashboard.css'
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 
-class EmployerDashboard extends Component {
+export default class EmployerDashboard extends Component {
   constructor(props){
     super(props)
 
@@ -17,22 +17,28 @@ class EmployerDashboard extends Component {
     this.deleteUser = this.deleteUser.bind(this);
   }
 
-  componentDidMount() {
-    this.getEmployees()
+  async componentDidMount() {
+    try {
+      const userData = await axios.get('/api/user-data')
+      if(userData.data) {
+        this.getEmployees()
+      }
+    } catch(error) {
+      console.log(error)
+      alert("Please sign in..")
+      this.props.history.push('/')
+    }
+    
   }
 
   async getEmployees() {
-    await axios.get('/api/employees')
-    .then( res => {
-      this.setState({employees: res.data})
-    })
+    const response = await axios.get('/api/employees')
+    this.setState({employees: response.data})
   }
 
   async deleteUser(id) {
-    await axios.delete(`/api/employees/${id}`)
-    .then( response => {
+    const response = await axios.delete(`/api/employees/${id}`)
       this.setState({employees: response.data})
-    })
   }
   
   render(){
@@ -66,9 +72,9 @@ class EmployerDashboard extends Component {
     )
   }
 }
-function mapStateToProps(state) {
-  const {employees} = state
-  return employees;
-} 
+// function mapStateToProps(state) {
+//   const {employees} = state
+//   return employees;
+// } 
 
-export default connect(mapStateToProps)(EmployerDashboard);
+// export default connect(mapStateToProps)(EmployerDashboard);

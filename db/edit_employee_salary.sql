@@ -1,3 +1,4 @@
 UPDATE employees
 SET salary = ${salary}
-where employee_id = ${employeeId};
+where employee_id = ${employeeId}
+returning *;

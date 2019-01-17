@@ -10,6 +10,7 @@ export default class EmployeeDetails extends Component {
     super(props);
 
     this.state = {
+      userInfo: {},
       employeeInfo: {},
       editClicked: false,
       salaryInput: ''
@@ -17,10 +18,19 @@ export default class EmployeeDetails extends Component {
     this.handleToggleEdit = this.handleToggleEdit.bind(this);
     this.editSalary = this.editSalary.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.checkSessions = this.checkSessions.bind(this);
   }
 
   componentDidMount() {
-    this.getEmployeeInfo()  
+    this.getEmployeeInfo()
+    this.checkSessions()
+  }
+  
+  checkSessions(){
+    axios.get('/api/user-data')
+    .then( res => {
+      this.setState({userInfo: res.data})
+    })
   }
   
   handleToggleEdit() {
@@ -41,6 +51,7 @@ export default class EmployeeDetails extends Component {
   editSalary(editedSalary) {
     axios.put(`/api/employees/${this.props.match.params.employeeid}`, {salary: editedSalary})
     .then( res => {
+      this.setState({employeeInfo: res.data})
       console.log({message: `Here's ${res.data.name}'s updated salary: ${res.data.salary}/hour`})
     });
     this.handleToggleEdit();
@@ -51,14 +62,14 @@ export default class EmployeeDetails extends Component {
   }
 
   render(){
-    console.log(this.props)
-    const {editClicked, salaryInput} = this.state;
+    // console.log(this.state.userInfo)
+    const {editClicked, salaryInput, userInfo} = this.state;
     const { name, username, email, image_url, position, salary } = this.state.employeeInfo;
     return(
       <div>
         <NavLoggedIn />
         <div className='body-container'>
-          <Link to='/dashboard'><img src={backButton} alt='back' id='back-icon'/></Link>
+          {userInfo.admin === 'yes' ? <Link to='/dashboard'><img src={backButton} alt='back' id='back-icon'/></Link> : null}
           <div className='profile-container'>
             <div>
               <img src={image_url} alt='employee-pic' id='picture'/>
@@ -74,7 +85,7 @@ export default class EmployeeDetails extends Component {
                   <button onClick={() => this.handleCancel()}>Cancel</button>
                 </div> : 
                 <div className='salary-spacing'>
-                  <div>Salary: ${salary} / hour</div><button className='edit-button' onClick={() => this.handleToggleEdit()}>Edit</button>
+                  <div>Salary: ${salary} / hour</div>{userInfo.admin === 'yes' ? <button className='edit-button' onClick={() => this.handleToggleEdit()}>Edit</button> : null}
                 </div>}
               </div> <br/>
               <div>Username: {username}</div> <br/>
@@ -86,3 +97,4 @@ export default class EmployeeDetails extends Component {
     )
   }
 }
+

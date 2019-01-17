@@ -29,7 +29,7 @@ module.exports = {
         userInfo = {...userInfo, ...response2[0]}  // ... OR... userInfo = Object.assign({}, userInfo, response[0])
         res.status(200).send({userInfo: userInfo, session: req.session.user})
         // console.log(userInfo)
-        console.log(response2[0])
+        // console.log(response2[0])
       })
     })
   },
@@ -48,13 +48,13 @@ module.exports = {
     let res2 = await db.delete_user({userId: id});
     let res3 = await db.get_all_employees({id: req.session.user.id})
     res.status(200).send(res3)
-    console.log(res3)
+    // console.log(res3)
   },
   getEmployeeInfo: async (req, res) => {
     const db = req.app.get('db');
     const {id} = req.params;
     let res1 = await db.get_employee({id: Number(id)});
-    console.log(res1[0])
+    // console.log(res1[0])
     res.status(200).send(res1[0])
   },
   editSalary: async (req, res) => {
@@ -63,7 +63,14 @@ module.exports = {
     const {salary} = req.body;
     let res1 = await db.edit_employee_salary({salary: salary, employeeId: id});
     let res2 = await db.get_employee({id: Number(id)});
-    console.log(res2[0]);
+    // console.log(res2[0]);
     res.status(200).send(res2[0]);
+  },
+  getCred: (req, res) => {
+    if(req.session.user) {
+      res.status(200).send(req.session.user)
+    } else {
+      res.status(401).send('Please log in.')
+    }
   }
 }

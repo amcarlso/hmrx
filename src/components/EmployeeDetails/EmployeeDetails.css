@@ -20,13 +20,13 @@
 
 #picture {
   border: 4px grey solid;
-  border-radius: 50px;
-  height: 100px;
-  width: 100px;
+  border-radius: 75px;
+  height: 150px;
+  width: 150px;
 }
 
 .info-container {
-  padding: 5px 100px;
+  padding: 10px 140px;
 }
 
 .info-container div {
@@ -50,6 +50,7 @@
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
 }
 .edit-button:hover {
-  background-color:rgb(228, 228, 228);
+  background-color:rgb(241, 241, 241);
+  border: 2px gold solid;
   cursor: pointer;
 }

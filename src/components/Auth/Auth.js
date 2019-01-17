@@ -12,6 +12,7 @@ export default class Auth extends Component {
       loginUsername: '',
       loginPassword: '',
       regName: '',
+      regPhone: '',
       regEmail: '',
       regUsername: '',
       regPassword: ''
@@ -19,8 +20,8 @@ export default class Auth extends Component {
   }
 
   async register() {
-    const {regName, regEmail, regUsername, regPassword} = this.state;
-    let res = await axios.post('/auth/register', {name: regName, email: regEmail, username: regUsername, password: regPassword});
+    const {regName, regPhone, regEmail, regUsername, regPassword} = this.state;
+    let res = await axios.post('/auth/register', {name: regName, phone: regPhone, email: regEmail, username: regUsername, password: regPassword});
     if(res.data.loggedIn) {
       this.props.history.push('/dashboard')
     }
@@ -29,10 +30,10 @@ export default class Auth extends Component {
   async login() {
     const {loginUsername, loginPassword} = this.state;
     let res = await axios.post('/auth/login', {username: loginUsername, password: loginPassword})
-    if(res.data.loggedIn && res.data.userData.admin === 'yes') {
+    if(res.data.userData && res.data.userData.admin === 'yes') {
       this.props.history.push('/dashboard')
-    } else if (res.data.loggedIn) {
-      this.props.history.push(`/employee/:${res.data.userData.id}`)
+    } else if (res.data.userData) {
+      this.props.history.push(`/employee/${res.data.userData.id}`)
     }
     console.log(res.data)
   }
@@ -58,13 +59,14 @@ export default class Auth extends Component {
           <p id='register'>Register</p>
           <input placeholder='name' onChange={(e) => this.setState({regName: e.target.value})} />
           <br/>
-          <input placeholder='email' onChange={(e) => this.setState({regEmail: e.target.value})} />
-          <br/>
           <input placeholder='username' onChange={(e) => this.setState({regUsername: e.target.value})} />
           <br/>
           <input placeholder='password' onChange={(e) => this.setState({regPassword: e.target.value})} type='password' />
           <br/>
-          <button className='button-styling' onClick={() => this.register()}>Register</button>
+          <input placeholder='phone ##########' onChange={(e) => this.setState({regPhone: e.target.value})} />
+          <br/>
+          <input placeholder='email@email.com' onChange={(e) => this.setState({regEmail: e.target.value})} />
+          <button className='button-styling' onClick={() => this.register()}>Enter</button>
         </div>
       </div>
     </div>

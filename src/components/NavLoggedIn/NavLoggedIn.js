@@ -3,6 +3,7 @@ import './NavLoggedIn.css';
 import logo from '../../images/logo.png';
 import axios from 'axios';
 import {getUserData} from '../../ducks/reducer';
+import {clearUserData} from '../../ducks/reducer';
 import {connect} from 'react-redux';
 
 class NavLoggedIn extends Component {
@@ -14,19 +15,16 @@ class NavLoggedIn extends Component {
     this.props.getUserData(res.data)
   }
 
-  
-
   render() {
     console.log(this.props)
     return (
       <div id='nav-spacing'>
         <img src={logo} alt='HMRX logo' className='logo'/>
         <div>
-           
           <div>
             <span id='welcome'>{`Welcome, ${this.props.user.name}`}</span>
             <a href='http://localhost:4321/auth/logout'>
-              <button className='button-styling'>Log Out</button>
+              <button onClick={() => this.props.clearUserData()} className='button-styling'>Log Out</button>
             </a>
           </div>
         </div>
@@ -36,4 +34,4 @@ class NavLoggedIn extends Component {
 }
 const mapStateToProps = (state) => state;
 
-export default connect(mapStateToProps, {getUserData})(NavLoggedIn);
+export default connect(mapStateToProps, {getUserData, clearUserData})(NavLoggedIn);
