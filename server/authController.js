@@ -1,10 +1,51 @@
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
+
 
 module.exports = {
   register: async (req, res) => {
     const {name, username, password, email} = req.body;
     const db = req.app.get('db');
     const userUsername = await db.find_user_username({username: username});
+    // 
+    nodemailer.createTestAccount((err, account) => {
+      const htmlEmail = `
+        <h3>Contact Details</h3>
+        <ul>
+          <li>Name: ${name}</li>
+          <li>Email: ${email}</li>
+        </ul>
+        <h3>Message</h3>
+        <p>Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees</p>
+      `
+
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        auth: {
+            user: 'fi7ct2cjoifdsfcj@ethereal.email',
+            pass: 'xmQrWxuJa8M9gHtSHf'
+        }
+      });
+
+      let mailOptions = {
+        from: 'fi7ct2cjoifdsfcj@ethereal.email',
+        to: `${email}`,
+        replyTo: 'fi7ct2cjoifdsfcj@ethereal.email',
+        subject: 'New Message',
+        text: 'Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees',
+        html: htmlEmail
+      }
+
+      transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          return console.log(err)
+        } else {
+          console.log('Message Sent')
+        }
+      })
+    })
+    // 
     if(userUsername.length >= 1) {
       res.status(200).send({message: 'username already in use'})
     }

@@ -36,4 +36,5 @@ app.get('/auth/logout', authCtrl.logout)
 app.get('/api/user-data', mainCtrl.getUser)
 app.delete('/api/employees/:id', mainCtrl.deleteEmployee)
 app.get('/api/employees/:id', mainCtrl.getEmployeeInfo)
+app.post('/api/employees/:id', mainCtrl.editSalary)
 
