@@ -11,7 +11,7 @@ export default class EmployeeDetails extends Component {
 
     this.state = {
       employeeInfo: {},
-      editClicked: false,
+      editClicked: true,
       salaryInput: ''
     }
   }
@@ -27,6 +27,7 @@ export default class EmployeeDetails extends Component {
     })
   }
   render(){
+    const {editClicked} = this.state;
     const { name, username, email, image_url, position, salary } = this.state.employeeInfo;
     return(
       <div>
@@ -42,9 +43,15 @@ export default class EmployeeDetails extends Component {
               <br/>
               <div>position: {position}</div>
               <br/>
-              <div id='salary-spacing'>
-                <div>Salary: ${salary} / hour</div>
-                <button className='edit-button'>Edit</button>
+              <div>
+                {editClicked ? 
+                <div className='salary-spacing'>
+                  <input onchange={(e) => this.setState({salaryInput: e.target.value})}/><button>Save</button><button>Cancel</button>
+                </div> : 
+                <div className='salary-spacing'>
+                  <div>Salary: ${salary} / hour</div><button className='edit-button'>Edit</button>
+                </div>}
+                
               </div>
               <br/>
               <div>Username: {username}</div>

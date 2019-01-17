@@ -1,5 +1,5 @@
 .body-container {
-  background-color: gray;
+  background-color: white;
   height: calc(100vh - 70px);
   padding: 30px;
 }
@@ -26,7 +26,7 @@
 }
 
 .info-container {
-  padding: 15px 100px;
+  padding: 5px 100px;
 }
 
 .info-container div {
@@ -34,7 +34,7 @@
   font-size: 1.5rem;
 }
 
-#salary-spacing {
+.salary-spacing {
   display: flex;
   justify-content: space-between;
 }

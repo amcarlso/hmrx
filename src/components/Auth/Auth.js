@@ -36,6 +36,11 @@ export default class Auth extends Component {
   }
 
   render(){
+    let config = {
+      from: 'testhmrx@gmail.com',
+      
+    }
+    let transporter = nodemailer.createTransport(transport[, defaults]);
     return(
     <div id='background'>
       <Nav />
