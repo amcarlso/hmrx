@@ -22,6 +22,9 @@ export default class EmployeeDetails extends Component {
   componentDidMount() {
     this.getEmployeeInfo()  
   }
+  componentDidUpdate() {
+    
+  }
   handleToggleEdit() {
     const {editClicked} = this.state;
     if(!editClicked) {
@@ -40,7 +43,7 @@ export default class EmployeeDetails extends Component {
   editSalary(editedSalary) {
     axios.post(`/api/employees/${this.props.match.params.employeeid}`, {salary: editedSalary})
     .then( res => {
-      console.log(res.data)
+      console.log({message: `Here's ${res.data.name}'s updated salary: ${res.data.salary}/hour`})
     });
     this.handleToggleEdit();
   }
