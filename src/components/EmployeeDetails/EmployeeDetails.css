@@ -1,0 +1,55 @@
+.body-container {
+  background-color: gray;
+  height: calc(100vh - 70px);
+  padding: 30px;
+}
+
+#back-icon {
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.profile-container {
+  height: 60vh;
+  width: 70vw;
+  background-color: #287add;
+  margin: 0 auto;
+  color: white;
+  padding: 20px;
+}
+
+#picture {
+  border: 4px grey solid;
+  border-radius: 50px;
+  height: 100px;
+  width: 100px;
+}
+
+.info-container {
+  padding: 15px 100px;
+}
+
+.info-container div {
+  margin: 5px 0;
+  font-size: 1.5rem;
+}
+
+#salary-spacing {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-button {
+  border: none;
+  height: 30px;
+  width: 50px;
+  background-color: white;
+  color: #287add;
+  border-radius: 20px;
+  margin: 0 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
+}
+.edit-button:hover {
+  background-color:rgb(228, 228, 228);
+  cursor: pointer;
+}

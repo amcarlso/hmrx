@@ -48,4 +48,17 @@ table {
 }
 
 * { box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
 }
+
+input {
+	border-radius: 3px;
+	border: none;
+	margin: 5px;
+	height: 23px;
+	width: 220px;
+}
+input:hover {
+	background-color: rgb(236, 236, 236);
+}
+

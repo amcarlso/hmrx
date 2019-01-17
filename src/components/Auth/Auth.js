@@ -37,31 +37,27 @@ export default class Auth extends Component {
 
   render(){
     return(
-    <div>
-      {(this.props.location.pathname !== '/') ? <Nav /> : null}
-      <div>
-        <span>HMRX</span>
-      
-      </div>
+    <div id='background'>
+      <Nav />
       <div id='options-spacing'>
         <div className='option-container'>
         <p id='sign-in'>Sign In</p>
         <input placeholder='username' onChange={(e) => this.setState({loginUsername: e.target.value})} />
         <br/>
-        <input placeholder='password' onChange={(e) => this.setState({loginPassword: e.target.value})} />
+        <input placeholder='password' onChange={(e) => this.setState({loginPassword: e.target.value})} type='password' />
         <br/>
         <button onClick={() => this.login()}>Enter</button>
         </div>
         <span>Or...</span>
         <div className='option-container'>
           <p id='register'>Register</p>
-          <input placeholder='Full Name' onChange={(e) => this.setState({regName: e.target.value})} />
+          <input placeholder='name' onChange={(e) => this.setState({regName: e.target.value})} />
           <br/>
-          <input placeholder='Email' onChange={(e) => this.setState({regEmail: e.target.value})} />
+          <input placeholder='email' onChange={(e) => this.setState({regEmail: e.target.value})} />
           <br/>
           <input placeholder='username' onChange={(e) => this.setState({regUsername: e.target.value})} />
           <br/>
-          <input placeholder='password' onChange={(e) => this.setState({regPassword: e.target.value})} />
+          <input placeholder='password' onChange={(e) => this.setState({regPassword: e.target.value})} type='password' />
           <br/>
           <button onClick={() => this.register()}>Register</button>
         </div>

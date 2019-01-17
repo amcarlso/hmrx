@@ -1,5 +1,32 @@
 #nav-spacing {
+  height: 70px;
+  width: 100%;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  align-items: center;
+  background-color: none;
+}
+
+#nav-spacing:hover {
+  background-color: none;
+}
+
+body {
+  color: #287add;
+}
+
+.button-styling {
+  border: none;
+  height: 40px;
+  width: 70px;
+  background-color: white;
+  color: #287add;
+  border-radius: 20px;
+  margin: 0 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
+}
+.button-styling:hover {
+  background-color:rgb(228, 228, 228);
+  cursor: pointer;
 }

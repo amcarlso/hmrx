@@ -1,4 +1,16 @@
 #card-box {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /* padding: 20px; */
+  text-decoration: none;
+}
+
+#new-button {
+  background: none;
+  border: none;
+  opacity: 0.4;
+}
+#new-button:hover {
+ opacity: 1.0;
 }

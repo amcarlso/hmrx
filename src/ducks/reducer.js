@@ -1,24 +1,22 @@
 const initialState = {
-  id: '',
-  name: '',
-  username: '',
-  email: '',
-  admin: ''
+  user: {},
+  employees: {}
 }
 
-const UPDATE_USER = 'UPDATE_USER';
+const GET_USER_DATA = 'GET_USER_DATA';
 
-export function updateUser(userInfo) {
+export function getUserData(userInfo) {
   return {
-    type: UPDATE_USER,
+    type: GET_USER_DATA,
     payload: userInfo
   }
 }
+// export function moveEmployeeData()
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
-    case UPDATE_USER:
-    return Object.assign({}, state, {})
+    case GET_USER_DATA:
+    return Object.assign({}, state, {user: action.payload})
     default: return state
   }
 }

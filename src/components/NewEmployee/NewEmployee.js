@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Nav from '../Nav/Nav';
+import NavLoggedIn from '../NavLoggedIn/NavLoggedIn';
 import './NewEmployee.css'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
@@ -20,15 +20,18 @@ export default class NewEmployee extends Component {
     }
   }
 
-  async addEmployee() {
+  addEmployee() {
     const {name, username, password, email, image, salary, position} = this.state;
-    await axios.post('/api/employees', {name: name, username: username, password: password, email: email, image: image, salary: salary, position: position})
+    axios.post('/api/employees', {name: name, username: username, password: password, email: email, image: image, salary: salary, position: position})
+    .then( res => {
+      this.props.history.push('/dashboard')
+    })
   }
 
   render(){
     return(
       <div>
-        {(this.props.location.pathname !== '/') ? <Nav /> : null}
+        <NavLoggedIn />
         <div id='form-container'>
           <div>
           <p id='form-title'>Add Employee</p>
@@ -64,7 +67,7 @@ export default class NewEmployee extends Component {
             <br/>
           </div>
           
-          <button onClick={() => this.addEmployee()}>Complete</button>
+          <button onClick={() => this.addEmployee()}>Add</button>
           <Link to='/dashboard'><button>Cancel</button></Link>
         </div>
       </div>
