@@ -18,12 +18,12 @@ export default class EmployeeDetails extends Component {
     this.handleToggleEdit = this.handleToggleEdit.bind(this);
     this.editSalary = this.editSalary.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
-    this.checkSessions = this.checkSessions.bind(this);
   }
 
   async componentDidMount() {
     try {
-      const userData = await this.checkSessions();
+      const userData = await axios.get('/api/user-data')
+      console.log(userData.data)
       if(userData.data) {
         await this.getEmployeeInfo()
       }
@@ -34,12 +34,7 @@ export default class EmployeeDetails extends Component {
     } 
   }
   
-  checkSessions(){
-    axios.get('/api/user-data')
-    .then( res => {
-      this.setState({userInfo: res.data})
-    })
-  }
+  
   
   handleToggleEdit() {
     const {editClicked} = this.state;

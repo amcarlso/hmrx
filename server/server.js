@@ -33,5 +33,4 @@ app.get('/api/user-data', mainCtrl.getUser);
 app.delete('/api/employees/:id', mainCtrl.deleteEmployee);
 app.get('/api/employees/:id', mainCtrl.getEmployeeInfo);
 app.put('/api/employees/:id', mainCtrl.editSalary);
-app.get('/api/user-data', mainCtrl.getCred);
 app.post("/charge", authCtrl.charge)

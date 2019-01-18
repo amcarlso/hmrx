@@ -65,12 +65,5 @@ module.exports = {
     let res2 = await db.get_employee({id: Number(id)});
     // console.log(res2[0]);
     res.status(200).send(res2[0]);
-  },
-  getCred: (req, res) => {
-    if(req.session.user) {
-      res.status(200).send(req.session.user)
-    } else {
-      res.status(401).send('Please log in.')
-    }
   }
 }
