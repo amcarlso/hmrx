@@ -38,7 +38,7 @@
 .option-container:hover {
   opacity: 0.8;
   border: 3px gold solid;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 #sign-in {

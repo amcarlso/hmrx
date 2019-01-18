@@ -21,9 +21,17 @@ export default class EmployeeDetails extends Component {
     this.checkSessions = this.checkSessions.bind(this);
   }
 
-  componentDidMount() {
-    this.getEmployeeInfo()
-    this.checkSessions()
+  async componentDidMount() {
+    try {
+      const userData = await this.checkSessions();
+      if(userData.data) {
+        await this.getEmployeeInfo()
+      }
+    } catch(error) {
+      console.log(error)
+      alert("Please sign in...")
+      this.props.history.push('/')
+    } 
   }
   
   checkSessions(){

@@ -20,6 +20,15 @@ export default class NewEmployee extends Component {
     }
   }
 
+  async componentDidMount() {
+    const res = await axios.get('/api/user-data');
+    console.log(res.userData)
+    if(!res.userData.data) {
+      alert("Please sign in...")
+      this.props.history.push('/')
+    }
+  }
+
   addEmployee() {
     const {name, username, password, email, image, salary, position} = this.state;
     axios.post('/api/employees', {name: name, username: username, password: password, email: email, image: image, salary: salary, position: position})
@@ -34,7 +43,7 @@ export default class NewEmployee extends Component {
         <NavLoggedIn />
         <div id='form-container'>
           <div>
-          <p id='form-title'>Add Employee</p>
+          <p id='form-title'>New Employee</p>
           </div>
           <div>
             <span id='subject-title'>Name:</span>
@@ -67,8 +76,8 @@ export default class NewEmployee extends Component {
             <br/>
           </div>
           
-          <button onClick={() => this.addEmployee()}>Add</button>
-          <Link to='/dashboard'><button>Cancel</button></Link>
+          <button className='new-buttons' onClick={() => this.addEmployee()}>Add</button>
+          <Link to='/dashboard'><button className='new-buttons'>Cancel</button></Link>
         </div>
       </div>
     )

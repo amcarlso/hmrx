@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const {EMAIL, PASSWORD, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER} = process.env
 const nodemailer = require('nodemailer');
 const client = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 require('dotenv').config();
 
 
@@ -73,9 +74,6 @@ module.exports = {
       email: newUserArr[0].email
     };
     console.log(req.session.user)
-
-    
-
     res.status(200).send({message: 'logged in', userData: req.session.user, loggedIn: true})
   },
   login: async (req, res) => {
@@ -93,13 +91,29 @@ module.exports = {
       id: userUsername[0].id,
       name: userUsername[0].username,
       admin: userUsername[0].admin,
-      email: userUsername[0].email
+      email: userUsername[0].email,
+      loggedIn: true
     };
     console.log(req.session.user)
     res.status(200).send({message:'logged in', userData: req.session.user, loggedIn: true})
   },
   logout: (req, res) => {
     req.session.destroy();
-    res.redirect('http://localhost:3000/#/')
+    res.redirect('http://localhost:3000/#/');
+    // console.log(req.session.user)
+  },
+  charge: async (req, res) => {
+    try {
+      let {status} = await stripe.charges.create({
+        amount: 2000,
+        currency: "usd",
+        description: "An example charge",
+        source: req.body
+      });
+  
+      res.json({status});
+    } catch (err) {
+      res.status(500).end();
+    }
   }
 }

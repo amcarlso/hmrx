@@ -20,15 +20,15 @@ export default class EmployerDashboard extends Component {
   async componentDidMount() {
     try {
       const userData = await axios.get('/api/user-data')
+      console.log(userData.data)
       if(userData.data) {
         this.getEmployees()
       }
     } catch(error) {
       console.log(error)
-      alert("Please sign in..")
+      alert("Please sign in...")
       this.props.history.push('/')
     }
-    
   }
 
   async getEmployees() {
@@ -43,6 +43,7 @@ export default class EmployerDashboard extends Component {
   
   render(){
     console.log(this.props)
+    // console.log(userData.data)
     // console.log(this.state.employees)
     let mapEmployees = this.state.employees.map(employee => {
       return(
@@ -60,14 +61,9 @@ export default class EmployerDashboard extends Component {
     // console.log(mapEmployees)
     return(
       <div>
-        <NavLoggedIn
-          // How do I make it so I can pass the props from employee map to Nav upon Login?
-          // Redux State?
-        />
+        <NavLoggedIn/>
         <Link to='/new'><button id='new-button'><img src='https://png.pngtree.com/svg/20141230/plus_line_circle_878677.png' height={40} alt='add-employee'/></button></Link>
-          <div id='card-box'>
-            {mapEmployees}
-          </div>
+        <div id='card-box'>{mapEmployees}</div>
       </div>
     )
   }

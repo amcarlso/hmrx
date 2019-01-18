@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './Auth.css'
 import axios from 'axios';
 import Nav from '../Nav/Nav';
-import {connect} from 'react-redux';
 
 export default class Auth extends Component {
   constructor(props) {
@@ -43,7 +42,7 @@ export default class Auth extends Component {
     <div id='background'>
       <Nav />
       <div id='header'>
-        <h1>Human Resources simplified</h1>
+        <h1>Human Resources Simplified</h1>
       </div>
       <div id='options-spacing'>
         <div className='option-container'>
