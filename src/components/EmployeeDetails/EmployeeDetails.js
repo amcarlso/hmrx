@@ -25,6 +25,7 @@ export default class EmployeeDetails extends Component {
       const userData = await axios.get('/api/user-data')
       console.log(userData.data)
       if(userData.data) {
+        this.setState({userInfo: userData.data})
         await this.getEmployeeInfo()
       }
     } catch(error) {
@@ -48,7 +49,7 @@ export default class EmployeeDetails extends Component {
   axios.get(`/api/employees/${this.props.match.params.employeeid}`)
     .then( res => {
       this.setState({employeeInfo: res.data})
-      console.log(this.state.employeeInfo)
+      console.log(res.data)
     })
   }
   editSalary(editedSalary) {
@@ -84,11 +85,11 @@ export default class EmployeeDetails extends Component {
                 {editClicked ? 
                 <div className='salary-spacing'>
                   <input onChange={(e) => this.setState({salaryInput: e.target.value})}/>
-                  <button onClick={() => this.editSalary(salaryInput)}>Save</button>
-                  <button onClick={() => this.handleCancel()}>Cancel</button>
+                  <button className='buttons' onClick={() => this.editSalary(salaryInput)}>Save</button>
+                  <button className='buttons' onClick={() => this.handleCancel()}>Cancel</button>
                 </div> : 
                 <div className='salary-spacing'>
-                  <div>Salary: ${salary} / hour</div>{userInfo.admin === 'yes' ? <button className='edit-button' onClick={() => this.handleToggleEdit()}>Edit</button> : null}
+                  <div>Salary: ${salary} / hour</div>{userInfo.admin === 'yes' ? <button className='buttons' onClick={() => this.handleToggleEdit()}>Edit</button> : null}
                 </div>}
               </div> <br/>
               <div>Username: {username}</div> <br/>

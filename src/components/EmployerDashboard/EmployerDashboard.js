@@ -20,7 +20,6 @@ export default class EmployerDashboard extends Component {
   async componentDidMount() {
     try {
       const userData = await axios.get('/api/user-data')
-      console.log(userData.data)
       if(userData.data) {
         this.getEmployees()
       }

@@ -39,17 +39,17 @@
   justify-content: space-between;
 }
 
-.edit-button {
+.buttons {
   border: none;
   height: 30px;
-  width: 50px;
+  width: 60px;
   background-color: white;
   color: #287add;
   border-radius: 20px;
   margin: 0 10px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
 }
-.edit-button:hover {
+.buttons:hover {
   background-color:rgb(241, 241, 241);
   border: 2px gold solid;
   cursor: pointer;

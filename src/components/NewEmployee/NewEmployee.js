@@ -21,11 +21,11 @@ export default class NewEmployee extends Component {
   }
 
   async componentDidMount() {
-    const res = await axios.get('/api/user-data');
-    console.log(res.userData)
-    if(!res.userData.data) {
-      alert("Please sign in...")
-      this.props.history.push('/')
+    try {
+      await axios.get('/api/user-data');
+    } catch {
+        alert("Please sign in...")
+        this.props.history.push('/')
     }
   }
 
