@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
+import './CheckoutForm.css'
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -23,10 +24,12 @@ class CheckoutForm extends Component {
     if (this.state.complete) return <h1>Purchase Complete</h1>;
     return (
       <div className="checkout">
-        <p>Would you like to complete the purchase?</p>
-        <p>Your card will be charged $0.01</p>
-        <CardElement />
-        <button onClick={this.submit}>Send</button>
+      <div>
+        <p className='description'>Would you like to complete the purchase?</p>
+        <p className='description'>Your card will be charged $0.01</p>
+      </div>
+        <CardElement id='card-info'/>
+        <button id='send-button' onClick={this.submit}>Send</button>
       </div>
     );
   }

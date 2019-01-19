@@ -71,7 +71,8 @@ module.exports = {
       id: newUserArr[0].id,
       name: newUserArr[0].username,
       admin: newUserArr[0].admin,
-      email: newUserArr[0].email
+      email: newUserArr[0].email,
+      loggedIn: true
     };
     console.log(req.session.user)
     res.status(200).send({message: 'logged in', userData: req.session.user, loggedIn: true})
@@ -110,7 +111,6 @@ module.exports = {
         description: "An example charge",
         source: req.body
       });
-  
       res.json({status});
     } catch (err) {
       res.status(500).end();

@@ -1,6 +1,8 @@
 const express = require('express');
 require('dotenv').config();
+const bodyParser = require('body-parser');
 const massive = require('massive');
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 const session = require('express-session');
 const authCtrl = require('./authController');
 const mainCtrl = require('./mainController');
@@ -9,6 +11,7 @@ const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 const app = express();
 
 app.use(express.json());
+app.use(require("body-parser").text());
 app.use(session({
   secret: SESSION_SECRET,
   resave: false,
@@ -33,4 +36,4 @@ app.get('/api/user-data', mainCtrl.getUser);
 app.delete('/api/employees/:id', mainCtrl.deleteEmployee);
 app.get('/api/employees/:id', mainCtrl.getEmployeeInfo);
 app.put('/api/employees/:id', mainCtrl.editSalary);
-app.post("/charge", authCtrl.charge)
+app.post("/charge", authCtrl.charge);

@@ -4,6 +4,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import EmployeeCard from '../EmployeeCard/EmployeeCard';
 import './EmployerDashboard.css'
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import CheckoutForm from '../CheckoutForm/CheckoutForm';
 // import {connect} from 'react-redux';
 
 export default class EmployerDashboard extends Component {
@@ -61,6 +63,13 @@ export default class EmployerDashboard extends Component {
     return(
       <div>
         <NavLoggedIn/>
+        <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+        <div className="example">
+          <Elements>
+            <CheckoutForm />
+          </Elements>
+        </div>
+      </StripeProvider>
         <Link to='/new'><button id='new-button'><img src='https://png.pngtree.com/svg/20141230/plus_line_circle_878677.png' height={40} alt='add-employee'/></button></Link>
         <div id='card-box'>{mapEmployees}</div>
       </div>
