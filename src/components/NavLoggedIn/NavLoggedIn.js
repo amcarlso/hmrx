@@ -38,7 +38,6 @@ class NavLoggedIn extends Component {
 
   render() {
     const {loggedIn} = this.state;
-    console.log(this.props);
     // console.log(this.state.userData)
     return (
       <div id='nav-spacing'>

@@ -72,6 +72,7 @@ module.exports = {
       name: newUserArr[0].username,
       admin: newUserArr[0].admin,
       email: newUserArr[0].email,
+      paid: newUserArr[0].paid,
       loggedIn: true
     };
     console.log(req.session.user)
@@ -93,6 +94,7 @@ module.exports = {
       name: userUsername[0].username,
       admin: userUsername[0].admin,
       email: userUsername[0].email,
+      paid: userUsername[0].paid,
       loggedIn: true
     };
     console.log(req.session.user)

@@ -65,5 +65,11 @@ module.exports = {
     let res2 = await db.get_employee({id: Number(id)});
     // console.log(res2[0]);
     res.status(200).send(res2[0]);
+  },
+  editPaid: async (req, res) => {
+    const db = req.app.get('db');
+    const {id} = req.params;
+    let res1 = await db.edit_paid({id: Number(id)});
+    res.status(200).send(res1[0])
   }
 }
