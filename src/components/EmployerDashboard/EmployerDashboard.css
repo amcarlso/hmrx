@@ -1,4 +1,8 @@
-
+.background {
+  background-image: url('../../images/logged-in-background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
 
 #card-box {
   display: flex;
@@ -15,4 +19,9 @@
 }
 #new-button:hover {
  opacity: 1.0;
+}
+
+.add-pay {
+  display: flex;
+  justify-content: center;
 }

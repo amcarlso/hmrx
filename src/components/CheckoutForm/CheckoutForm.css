@@ -7,6 +7,11 @@
   text-align: center;
   border-radius: 20px;
   border: 5px #287add solid;
+  opacity: 0.6;
+}
+
+.checkout:hover {
+  opacity: 0.8;
 }
 
 .checkout-paid {
@@ -21,7 +26,7 @@
   border: 5px #287add solid;
 }
 
-#send-button {
+#pay-button {
   border: none;
   height: 30px;
   width: 60px;
@@ -30,6 +35,11 @@
   border-radius: 20px;
   margin: 0 10px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
+}
+#pay-button:hover {
+  background-color:rgb(241, 241, 241);
+  border: 2px gold solid;
+  cursor: pointer;
 }
 
 .description {

@@ -34,7 +34,7 @@ module.exports = {
         from: EMAIL,
         to: email,
         replyTo: EMAIL,
-        subject: 'New Message',
+        subject: 'HMRX Registration',
         text: 'Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees',
         html: htmlEmail
       }

@@ -39,7 +39,7 @@ export default class NewEmployee extends Component {
 
   render(){
     return(
-      <div>
+      <div className='background'>
         <NavLoggedIn />
         <div id='form-container'>
           <div>

@@ -13,7 +13,8 @@ export default function EmployeeCard(props) {
         
           <img id='image-style' src={props.image} alt={props.name} />
         
-          <p id='name-style'>{props.name}</p>
+          <p className='text-style'>{props.name}</p>
+          <p className='text-style'>{props.position}</p>
         </div>
         </Link>
       </div>

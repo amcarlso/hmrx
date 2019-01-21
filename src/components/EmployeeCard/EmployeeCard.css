@@ -7,10 +7,11 @@
   margin: 10px 5px;
   border-radius: 15px;
   box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
 }
 #card-container:hover {
   border: 2px gold solid;
-  opacity: 0.8;
+  opacity: 0.7;
   transition: 0.3s;
 }
 
@@ -20,9 +21,9 @@
   align-items: center;
 }
 
-#name-style {
+.text-style {
   text-align: center;
-  line-height: 140px;
+  line-height: 70px;
   font-size: 1.5rem;
   color: white;
   font-family: 'Montserrat', sans-serif;

@@ -1,8 +1,15 @@
-.body-container {
+.background {
+  height: 100vh;
+  background-image: url('../../images/logged-in-background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: repeat-y;
+}
+/* .body-container {
   background-color: white;
   height: calc(100vh - 70px);
   padding: 30px;
-}
+} */
 
 #back-icon {
   height: 40px;
@@ -16,6 +23,8 @@
   margin: 0 auto;
   color: white;
   padding: 20px;
+  border-radius: 30px;
+  opacity: 0.8;
 }
 
 #picture {

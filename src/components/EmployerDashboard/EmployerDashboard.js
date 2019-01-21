@@ -55,39 +55,44 @@ export default class EmployerDashboard extends Component {
             key={employee.id}
             image={employee.image_url}
             name={employee.name}
+            position={employee.position}
             deleteUserFn={this.deleteUser}
           />
       )
     })
     return(
-      <div>
+      <div className='background'>
         <NavLoggedIn/>
-        <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-        <div className="example">
-          <Elements>
-            <CheckoutForm userData={userData}/>
-          </Elements>
+        <div className='add-pay'>
+          <button 
+            onClick={
+              () => {
+                userData.paid === 'yes' ? 
+                this.props.history.push('/new') : 
+                Swal.fire({
+                  type: 'error',
+                  title: 'Oops...',
+                  text: 'You must pay before using this feature.'
+                })
+              }
+            }
+            id='new-button'
+          >
+            <img 
+              src='https://png.pngtree.com/svg/20141230/plus_line_circle_878677.png' 
+              height={40} 
+              alt='add-employee'
+            />
+          </button>
+          <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+            <div className="example">
+              <Elements>
+                <CheckoutForm userData={userData}/>
+              </Elements>
+            </div>
+          </StripeProvider>
         </div>
-      </StripeProvider>
-        <button onClick={
-          () => {
-            userData.paid === 'yes' ? 
-            this.props.history.push('/new') : 
-            Swal.fire({
-              type: 'error',
-              title: 'Oops...',
-              text: 'You must pay before using this feature.'
-            })
-          }
-        }
-          id='new-button'
-        >
-          <img 
-            src='https://png.pngtree.com/svg/20141230/plus_line_circle_878677.png' 
-            height={40} 
-            alt='add-employee'
-          />
-        </button>
+        
         <div id='card-box'>{mapEmployees}</div>
       </div>
     )

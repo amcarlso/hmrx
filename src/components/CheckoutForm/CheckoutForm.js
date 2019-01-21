@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import './CheckoutForm.css'
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -19,7 +20,19 @@ class CheckoutForm extends Component {
     });
     console.log(response)
     console.log(this.props)
-    if (response.ok) console.log("Purchase Complete!")
+    if (response.ok) {Swal.fire({
+      position: 'top-end',
+      type: 'success',
+      title: 'Payment Successful',
+      showConfirmButton: false,
+      timer: 1500
+    })} else {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Payment not completed. Please try again.'
+      })
+    }
     if (response.ok) await axios.put(`api/user-data/${this.props.userData.id}`)
   }
 
@@ -33,7 +46,7 @@ class CheckoutForm extends Component {
         <p className='description'>Your card will be charged $2.00</p>
       </div>
         <CardElement id='card-info'/>
-        <button id='send-button' onClick={this.submit}>Send</button>
+        <button id='pay-button' onClick={this.submit}>Send</button>
       </div>
     );
   }

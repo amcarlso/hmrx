@@ -70,13 +70,13 @@ export default class EmployeeDetails extends Component {
     const {editClicked, salaryInput, userInfo} = this.state;
     const { name, username, email, image_url, position, salary } = this.state.employeeInfo;
     return(
-      <div>
+      <div className='background'>
         <NavLoggedIn />
-        <div className='body-container'>
+        <div>
           {userInfo.admin === 'yes' ? <Link to='/dashboard'><img src={backButton} alt='back' id='back-icon'/></Link> : null}
           <div className='profile-container'>
             <div>
-              <img src={image_url} alt='employee-pic' id='picture'/>
+              <img src={image_url} alt={name} id='picture'/>
             </div>
             <div className='info-container'>
               <div>Name: {name}</div> <br/>
