@@ -33,7 +33,10 @@ class CheckoutForm extends Component {
         text: 'Something went wrong! Payment not completed. Please try again.'
       })
     }
-    if (response.ok) await axios.put(`api/user-data/${this.props.userData.id}`)
+    if (response.ok){
+      await axios.put(`api/user-data/${this.props.userData.id}`);
+      this.props.getUserDataFn();
+    }
   }
 
   render() {
@@ -42,11 +45,12 @@ class CheckoutForm extends Component {
     return (
       <div className={userData.paid === 'yes' ? "checkout-paid" : "checkout"}>
       <div>
-        <p className='description'>Would you like to complete the purchase?</p>
+        <p className='description'>Please pay to start your HMRX experience</p>
         <p className='description'>Your card will be charged $2.00</p>
       </div>
         <CardElement id='card-info'/>
-        <button id='pay-button' onClick={this.submit}>Send</button>
+        <p className='description'>After Payment, adding employees will be enabled</p>
+        <button id='pay-button' onClick={this.submit}>Confirm</button>
       </div>
     );
   }

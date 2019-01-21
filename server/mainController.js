@@ -70,6 +70,7 @@ module.exports = {
     const db = req.app.get('db');
     const {id} = req.params;
     let res1 = await db.edit_paid({id: Number(id)});
+    req.session.user = res1[0];
     res.status(200).send(res1[0])
   }
 }

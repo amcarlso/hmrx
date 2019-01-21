@@ -2,6 +2,23 @@
   background-image: url('../../images/logged-in-background.jpg');
   background-size: cover;
   background-attachment: fixed;
+  overflow-y: auto;
+}
+
+.content-display {
+  width: 65vw;
+  margin: 0 auto;
+}
+
+#employees-title-container {
+  display: flex;
+  color: #287add
+}
+
+#employees-title {
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 #card-box {
@@ -16,9 +33,15 @@
   background: none;
   border: none;
   opacity: 0.4;
+  height: 40px;
 }
 #new-button:hover {
  opacity: 1.0;
+ transition: 0.5s;
+}
+
+#add-button {
+  height: 40px;
 }
 
 .add-pay {

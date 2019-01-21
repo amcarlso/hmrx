@@ -1,17 +1,19 @@
 .checkout {
   height: 40vh;
-  width: 400px;
+  width: 490px;
   background-color: white;
   margin: 0 auto;
-  padding: 20px;
+  padding: 2% 10px;
   text-align: center;
   border-radius: 20px;
-  border: 5px #287add solid;
+  border: 3px #287add solid;
   opacity: 0.6;
 }
 
 .checkout:hover {
   opacity: 0.8;
+  transition: 0.2s;
+  border: 3.5px #287add solid;
 }
 
 .checkout-paid {
@@ -29,11 +31,11 @@
 #pay-button {
   border: none;
   height: 30px;
-  width: 60px;
+  width: 70px;
   background-color: white;
   color: #287add;
   border-radius: 20px;
-  margin: 0 10px;
+  margin: 2% 0px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
 }
 #pay-button:hover {
@@ -46,4 +48,9 @@
   font-family: 'Montserrat', sans-serif;
   color: #287add;
   font-size: 1.3rem;
+  margin: 15px 0;
+}
+
+#card-info:hover {
+  opacity: 1;
 }

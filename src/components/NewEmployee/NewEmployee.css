@@ -1,11 +1,12 @@
 #form-container{
-  height: 70vh;
+  height: 75vh;
   width: 70vw;
   background-color: #287add;
   margin: 0 auto;
   padding: 0 12%;
   color: white;
   border-radius: 15px;
+  opacity: 0.75;
 }
 
 #form-title {

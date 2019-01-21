@@ -48,31 +48,31 @@ export default class NewEmployee extends Component {
           <div>
             <span id='subject-title'>Name:</span>
             <br/>
-            <input onChange={(e) => this.setState({name: e.target.value})} />
+            <input placeholder='Name' onChange={(e) => this.setState({name: e.target.value})} />
             <br/>
             <span id='subject-title'>Username:</span>
             <br/>
-            <input onChange={(e) => this.setState({username: e.target.value})} />
+            <input placeholder='Username' onChange={(e) => this.setState({username: e.target.value})} />
             <br/>
             <span id='subject-title'>Password:</span>
             <br/>
-            <input onChange={(e) => this.setState({password: e.target.value})} />
+            <input placeholder='Password' onChange={(e) => this.setState({password: e.target.value})} />
             <br/>
             <span id='subject-title'>Email:</span>
             <br/>
-            <input onChange={(e) => this.setState({email: e.target.value})} />
+            <input placeholder='Email' onChange={(e) => this.setState({email: e.target.value})} />
             <br/>
             <span id='subject-title'>Image:</span>
             <br/>
-            <input onChange={(e) => this.setState({image: e.target.value})} />
+            <input placeholder='Image' onChange={(e) => this.setState({image: e.target.value})} />
             <br/>
             <span id='subject-title'>Salary:</span>
             <br/>
-            <input onChange={(e) => this.setState({salary: e.target.value})} />
+            <input placeholder='Salary' onChange={(e) => this.setState({salary: e.target.value})} />
             <br/>
             <span id='subject-title'>Position:</span>
             <br/>
-            <input onChange={(e) => this.setState({position: e.target.value})} />
+            <input placeholder='Position' onChange={(e) => this.setState({position: e.target.value})} />
             <br/>
           </div>
           

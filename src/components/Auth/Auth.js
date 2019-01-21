@@ -42,30 +42,32 @@ export default class Auth extends Component {
     <div id='background'>
       <Nav />
       <div id='header'>
-        <h1>Human Resources Simplified</h1>
-      </div>
-      <div id='options-spacing'>
-        <div className='option-container'>
-        <p id='sign-in'>Sign In</p>
-        <input placeholder='username' onChange={(e) => this.setState({loginUsername: e.target.value})} />
-        <br/>
-        <input placeholder='password' onChange={(e) => this.setState({loginPassword: e.target.value})} type='password' />
-        <br/>
-        <button className='button-styling' onClick={() => this.login()}>Enter</button>
+          <h1>Human Resources Simplified</h1>
         </div>
+      <div className='content-display'>
+        <div id='options-spacing'>
+          <div className='option-container'>
+          <p id='sign-in'>Sign In</p>
+          <input placeholder='username' onChange={(e) => this.setState({loginUsername: e.target.value})} />
+          <br/>
+          <input placeholder='password' onChange={(e) => this.setState({loginPassword: e.target.value})} type='password' />
+          <br/>
+          <button className='button-styling' onClick={() => this.login()}>Enter</button>
+          </div>
 
-        <div className='option-container'>
-          <p id='register'>Register</p>
-          <input placeholder='name' onChange={(e) => this.setState({regName: e.target.value})} />
-          <br/>
-          <input placeholder='username' onChange={(e) => this.setState({regUsername: e.target.value})} />
-          <br/>
-          <input placeholder='password' onChange={(e) => this.setState({regPassword: e.target.value})} type='password' />
-          <br/>
-          <input placeholder='phone ##########' onChange={(e) => this.setState({regPhone: e.target.value})} />
-          <br/>
-          <input placeholder='email@email.com' onChange={(e) => this.setState({regEmail: e.target.value})} />
-          <button className='button-styling' onClick={() => this.register()}>Enter</button>
+          <div className='option-container'>
+            <p id='register'>Register</p>
+            <input placeholder='name' onChange={(e) => this.setState({regName: e.target.value})} />
+            <br/>
+            <input placeholder='username' onChange={(e) => this.setState({regUsername: e.target.value})} />
+            <br/>
+            <input placeholder='password' onChange={(e) => this.setState({regPassword: e.target.value})} type='password' />
+            <br/>
+            <input placeholder='phone ##########' onChange={(e) => this.setState({regPhone: e.target.value})} />
+            <br/>
+            <input placeholder='email@email.com' onChange={(e) => this.setState({regEmail: e.target.value})} />
+            <button className='button-styling' onClick={() => this.register()}>Enter</button>
+          </div>
         </div>
       </div>
     </div>

@@ -16,8 +16,14 @@
   margin-bottom: 20px;
 }
 
+.img-n-clock-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .profile-container {
-  height: 60vh;
+  height: 70vh;
   width: 70vw;
   background-color: #287add;
   margin: 0 auto;
@@ -50,8 +56,8 @@
 
 .buttons {
   border: none;
-  height: 30px;
-  width: 60px;
+  height: 40px;
+  width: 80px;
   background-color: white;
   color: #287add;
   border-radius: 20px;

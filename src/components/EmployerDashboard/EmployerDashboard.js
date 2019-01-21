@@ -6,6 +6,7 @@ import './EmployerDashboard.css'
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
 import Swal from 'sweetalert2';
+import add from '../../images/add.png';
 
 export default class EmployerDashboard extends Component {
   constructor(props){
@@ -17,16 +18,21 @@ export default class EmployerDashboard extends Component {
     }
     
     this.deleteUser = this.deleteUser.bind(this);
+    this.getUserData = this.getUserData.bind(this);
   }
 
   async componentDidMount() {
+      this.getUserData();
+  }
+
+  async getUserData() {
     try {
-      const userData = await axios.get('/api/user-data')
-      
-      if(userData.data) {
-        this.setState({userData: userData.data})
-        await this.getEmployees();
-      }
+    const userData = await axios.get('/api/user-data');
+    if(userData.data) {
+
+      this.setState({userData: userData.data})
+      await this.getEmployees();
+    }
     } catch(error) {
       console.log(error)
       alert("Please sign in...")
@@ -46,7 +52,7 @@ export default class EmployerDashboard extends Component {
   
   render(){
     const {userData} = this.state;    
-    console.log(userData)
+    console.log(this.props)
     let mapEmployees = this.state.employees.map(employee => {
       return(
           <EmployeeCard
@@ -63,37 +69,46 @@ export default class EmployerDashboard extends Component {
     return(
       <div className='background'>
         <NavLoggedIn/>
-        <div className='add-pay'>
-          <button 
-            onClick={
-              () => {
-                userData.paid === 'yes' ? 
-                this.props.history.push('/new') : 
-                Swal.fire({
-                  type: 'error',
-                  title: 'Oops...',
-                  text: 'You must pay before using this feature.'
-                })
-              }
-            }
-            id='new-button'
-          >
-            <img 
-              src='https://png.pngtree.com/svg/20141230/plus_line_circle_878677.png' 
-              height={40} 
-              alt='add-employee'
-            />
-          </button>
-          <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-            <div className="example">
-              <Elements>
-                <CheckoutForm userData={userData}/>
-              </Elements>
+        <div className='content-display'>
+          <div className='add-pay'>
+            <div id='employees-title-container'>
+              <span id='employees-title'>Employees</span>
+              <button 
+                onClick={
+                  () => {
+                    userData.paid === 'yes' ? 
+                    this.props.history.push('/new') : 
+                    Swal.fire({
+                      type: 'error',
+                      title: 'Oops...',
+                      text: 'You must pay before using this feature.'
+                    })
+                  }
+                }
+                id='new-button'
+              >
+                <img 
+                  src={add} 
+                  id='add-button' 
+                  alt='add-employee'
+                />              
+              </button>
             </div>
-          </StripeProvider>
+            
+            <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+              <div className="example">
+                <Elements>
+                  <CheckoutForm 
+                    userData={userData}
+                    getUserDataFn={this.getUserData}
+                  />
+                </Elements>
+              </div>
+            </StripeProvider>
+          </div>
+          <div id='card-box'>{mapEmployees}</div>
         </div>
         
-        <div id='card-box'>{mapEmployees}</div>
       </div>
     )
   }

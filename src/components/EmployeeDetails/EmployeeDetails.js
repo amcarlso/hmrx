@@ -75,8 +75,9 @@ export default class EmployeeDetails extends Component {
         <div>
           {userInfo.admin === 'yes' ? <Link to='/dashboard'><img src={backButton} alt='back' id='back-icon'/></Link> : null}
           <div className='profile-container'>
-            <div>
+            <div className='img-n-clock-container'>
               <img src={image_url} alt={name} id='picture'/>
+              <button className='buttons'>Time Clock</button>
             </div>
             <div className='info-container'>
               <div>Name: {name}</div> <br/>
