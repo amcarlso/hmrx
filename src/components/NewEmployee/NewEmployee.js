@@ -3,6 +3,7 @@ import NavLoggedIn from '../NavLoggedIn/NavLoggedIn';
 import './NewEmployee.css'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 export default class NewEmployee extends Component {
@@ -24,7 +25,11 @@ export default class NewEmployee extends Component {
     try {
       await axios.get('/api/user-data');
     } catch {
-        alert("Please sign in...")
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'You are not logged in. Please Log in.'
+      })
         this.props.history.push('/')
     }
   }

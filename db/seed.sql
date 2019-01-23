@@ -16,3 +16,10 @@ CREATE TABLE employees
     position TEXT,
     company_id INTEGER REFERENCES users(id)
 );
+
+CREATE TABLE punches(
+    punch_id SERIAL PRIMARY KEY,
+    punch_in VARCHAR(100),
+    punch_out VARCHAR(100),
+    employee_id INTEGER REFERENCES employees(id)
+);

@@ -1,0 +1,61 @@
+.background-clock {
+  height: 100vh;
+  background-image: url('../../images/logged-in-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: auto;
+  opacity: 0.8;
+}
+
+#clock-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #287add;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 750;
+}
+
+#picture-title-styling {
+  text-align: center;
+  margin: 20px;
+}
+
+
+#punches-container {
+  width: 40vw;
+  margin: 0 auto;
+}
+
+#punches-title {
+  display: flex;
+  justify-content: space-between;
+  color: #287add;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 750;
+}
+
+#punch-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clock-buttons {
+  border: none;
+  height: 45px;
+  width: 85px;
+  background-color: white;
+  color: #287add;
+  border-radius: 20px;
+  margin: 0 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
+  margin: 5px 5px;
+}
+.clock-buttons:hover {
+  background-color:rgb(241, 241, 241);
+  border: 2px gold solid;
+  cursor: pointer;
+}

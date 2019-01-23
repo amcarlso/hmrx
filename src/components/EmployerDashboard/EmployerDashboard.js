@@ -35,7 +35,11 @@ export default class EmployerDashboard extends Component {
     }
     } catch(error) {
       console.log(error)
-      alert("Please sign in...")
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'You are not logged in. Please Log in.'
+      })
       this.props.history.push('/')
     }
   }
@@ -52,7 +56,7 @@ export default class EmployerDashboard extends Component {
   
   render(){
     const {userData} = this.state;    
-    console.log(this.props)
+    console.log(this.state)
     let mapEmployees = this.state.employees.map(employee => {
       return(
           <EmployeeCard

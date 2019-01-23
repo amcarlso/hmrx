@@ -4,6 +4,7 @@ import './EmployeeDetails.css'
 import backButton from '../../images/back.png'
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default class EmployeeDetails extends Component {
   constructor(props) {
@@ -30,12 +31,14 @@ export default class EmployeeDetails extends Component {
       }
     } catch(error) {
       console.log(error)
-      alert("Please sign in...")
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'You are not logged in. Please Log in.'
+      })
       this.props.history.push('/')
     } 
   }
-  
-  
   
   handleToggleEdit() {
     const {editClicked} = this.state;
@@ -46,6 +49,7 @@ export default class EmployeeDetails extends Component {
     }
   }
   getEmployeeInfo() {
+    console.log(this.props)
   axios.get(`/api/employees/${this.props.match.params.employeeid}`)
     .then( res => {
       this.setState({employeeInfo: res.data})
@@ -66,7 +70,7 @@ export default class EmployeeDetails extends Component {
   }
 
   render(){
-    // console.log(this.state.userInfo)
+    console.log(this.state);
     const {editClicked, salaryInput, userInfo} = this.state;
     const { name, username, email, image_url, position, salary } = this.state.employeeInfo;
     return(
@@ -76,8 +80,8 @@ export default class EmployeeDetails extends Component {
           {userInfo.admin === 'yes' ? <Link to='/dashboard'><img src={backButton} alt='back' id='back-icon'/></Link> : null}
           <div className='profile-container'>
             <div className='img-n-clock-container'>
-              <img src={image_url} alt={name} id='picture'/>
-              <button className='buttons'>Time Clock</button>
+              <img src={image_url} alt={name} className='picture'/>
+              <Link to={`/clock/${this.props.match.params.employeeid}`}><button className='buttons'>Time Clock</button></Link>
             </div>
             <div className='info-container'>
               <div>Name: {name}</div> <br/>
@@ -94,7 +98,7 @@ export default class EmployeeDetails extends Component {
                 </div>}
               </div> <br/>
               <div>Username: {username}</div> <br/>
-              <div>Email: {email}</div>
+              <div>Emdail: {email}</div>
             </div>
           </div>
         </div>

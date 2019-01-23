@@ -30,10 +30,11 @@
   color: white;
   padding: 20px;
   border-radius: 30px;
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.2);
   opacity: 0.8;
 }
 
-#picture {
+.picture {
   border: 4px grey solid;
   border-radius: 75px;
   height: 150px;

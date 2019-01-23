@@ -6,7 +6,7 @@ const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 const session = require('express-session');
 const authCtrl = require('./authController');
 const mainCtrl = require('./mainController');
-const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
+const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT, NODE_ENV} = process.env;
 
 const app = express();
 
@@ -17,6 +17,17 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+console.log(NODE_ENV)
+app.use(async (req, res, next) => {
+  if(NODE_ENV === 'development' && !req.session.user){
+      const db = req.app.get('db')
+      const userData = await db.set_data()
+      req.session.user = userData[0]
+      next()
+  }else{
+      next()
+  }
+});
 
 
 massive(CONNECTION_STRING).then( db => {
@@ -37,4 +48,7 @@ app.delete('/api/employees/:id', mainCtrl.deleteEmployee);
 app.get('/api/employees/:id', mainCtrl.getEmployeeInfo);
 app.put('/api/employees/:id', mainCtrl.editSalary);
 app.post("/charge", authCtrl.charge);
-app.put('/api/user-data/:id', mainCtrl.editPaid)
+app.put('/api/user-data/:id', mainCtrl.editPaid);
+app.get('/api/punches/:id', mainCtrl.getPunches);
+app.post('/api/punches', mainCtrl.addPunchIn);
+app.put('/api/punches/:id', mainCtrl.addPunchOut);
