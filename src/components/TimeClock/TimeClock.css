@@ -14,7 +14,7 @@
   align-items: center;
   color: #287add;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 750;
 }
 
@@ -31,16 +31,26 @@
 
 #punches-title {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   color: #287add;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
   font-weight: 750;
+  margin-bottom: 2vh;
+  padding: 5px;
+  border: 2px gold solid;
+}
+
+#punches-title span {
+  text-align: center;
+  width: 10vw;
+  color: #287add;
 }
 
 #punch-box {
   display: flex;
   justify-content: space-between;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .clock-buttons {

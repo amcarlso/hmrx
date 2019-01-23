@@ -71,25 +71,26 @@ module.exports = {
     const {id} = req.params;
     let res1 = await db.edit_paid({id: Number(id)});
     req.session.user = res1[0];
-    res.status(200).send(res1[0])
+    res.status(200).send(res1[0]);
   },
   getPunches: async (req, res) => {
     const db = req.app.get('db');
     const {id} = req.params;
     let res1 = await db.get_punches({id: Number(id)});
-    res.status(200).send(res1)
+    res.status(200).send(res1);
   },
   addPunchIn: async (req, res) => {
     const db = req.app.get('db');
     const {id} = req.params;
     const {punchIn} = req.body;
     let res1 = await db.add_punch_in({punchIn: punchIn, employeeId: Number(id)});
-    res.status(200).send(res1)
+    res.status(200).send(res1);
   },
   addPunchOut: async (req, res) => {
     const db = req.app.get('db');
     const {id} = req.params;
     const {punchOut} = req.body;
     let res1 = await db.add_punch_out({punchOut: punchOut, employeeId: Number(id)})
+    res.status(200).send(res1);
   }
 }

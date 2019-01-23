@@ -39,7 +39,6 @@ export default class TimeClock extends Component {
       this.props.history.push('/');
     } 
   }
-
   getEmployeeInfo() {
     console.log(this.state)
     axios.get(`/api/employees/${this.props.match.params.employeeid}`)
@@ -48,29 +47,25 @@ export default class TimeClock extends Component {
       this.getPunches()
     })
   }
-
   punchIn() {
     let punchIn = moment().format("MM/DD/YYYY hh:mm A");
-    axios.post('/api/punches', {punchIn: punchIn})
+    axios.post(`/api/punches/${this.state.employeeInfo.id}`, {punchIn: punchIn})
     .then( res => {
-      this.setState({punches: res.data})
+      this.getPunches();
     })
   }
-
   punchOut() {
     let punchOut = moment().format("MM/DD/YYYY hh:mm A");
     axios.put(`/api/punches/${this.state.employeeInfo.id}`, {punchOut: punchOut})
     .then( res => {
-      this.setState({punches: res.data})
+      this.getPunches();
     })
+    console.log(this.state.punches)
   }
-
   getPunches() {
     console.log(this.state)
     axios.get(`/api/punches/${this.state.employeeInfo.id}`)
-    .then( res => {
-      this.setState({punches: res.data})
-    })
+    .then( res => this.setState({punches: res.data}))
   }
 
   render(){
@@ -114,7 +109,9 @@ export default class TimeClock extends Component {
             <span>Hours</span>
           </div>
           <div id='punch-box'>
-            {mapPunches}
+            <div>
+              {mapPunches}
+            </div>
           </div>
         </div>
       </div>

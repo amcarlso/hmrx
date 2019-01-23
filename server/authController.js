@@ -20,7 +20,7 @@ module.exports = {
           <li>Email: ${email}</li>
         </ul>
         <h3>Message</h3>
-        <p>Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees</p>
+        <p>${name}, Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees</p>
       `
       const transporter = nodemailer.createTransport({
         host: 'smtp-mail.outlook.com',

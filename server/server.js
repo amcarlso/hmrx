@@ -50,5 +50,5 @@ app.put('/api/employees/:id', mainCtrl.editSalary);
 app.post("/charge", authCtrl.charge);
 app.put('/api/user-data/:id', mainCtrl.editPaid);
 app.get('/api/punches/:id', mainCtrl.getPunches);
-app.post('/api/punches', mainCtrl.addPunchIn);
+app.post('/api/punches/:id', mainCtrl.addPunchIn);
 app.put('/api/punches/:id', mainCtrl.addPunchOut);
