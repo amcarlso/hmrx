@@ -49,7 +49,6 @@ export default class EmployeeDetails extends Component {
     }
   }
   getEmployeeInfo() {
-    console.log(this.props)
   axios.get(`/api/employees/${this.props.match.params.employeeid}`)
     .then( res => {
       this.setState({employeeInfo: res.data})
@@ -70,7 +69,6 @@ export default class EmployeeDetails extends Component {
   }
 
   render(){
-    console.log(this.state);
     const {editClicked, salaryInput, userInfo} = this.state;
     const { name, username, email, image_url, position, salary } = this.state.employeeInfo;
     return(

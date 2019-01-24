@@ -26,6 +26,7 @@
   }
   .punch-style div {
     width: 85px;
+    font-size: 14px;
   }
 }
 @media (max-width: 445px) {
@@ -34,5 +35,6 @@
   }
   .punch-style div {
     width: 75px;
+    font-size: 13px;
   }
 }

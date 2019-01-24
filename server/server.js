@@ -1,7 +1,6 @@
 const express = require('express');
 require('dotenv').config();
 const massive = require('massive');
-const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 const session = require('express-session');
 const authCtrl = require('./authController');
 const mainCtrl = require('./mainController');
@@ -26,7 +25,7 @@ app.use(session({
 //   }else {
 //       next()
 //   }
-// });
+// });    THIS CAN BE USED DURING DEVELOPMENT TO STAY LOGGED IN
 
 massive(CONNECTION_STRING).then( db => {
   console.log('connected to db')

@@ -56,7 +56,6 @@ export default class EmployerDashboard extends Component {
   
   render(){
     const {userData} = this.state;    
-    console.log(this.state)
     let mapEmployees = this.state.employees.map(employee => {
       return(
           <EmployeeCard
@@ -99,7 +98,7 @@ export default class EmployerDashboard extends Component {
               </button>
             </div>
           {/* </div> */}
-          <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+          <StripeProvider apiKey="pk_test_ptXrptuwYCDTib1zawFxwEwL">
               <div className="example">
                 <Elements>
                   <CheckoutForm 

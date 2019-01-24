@@ -38,6 +38,13 @@ export default class Auth extends Component {
     const {loginUsername, loginPassword} = this.state;
     let res = await axios.post('/auth/login', {username: loginUsername, password: loginPassword})
     if(res.data.userData && res.data.userData.admin === 'yes') {
+      Swal.fire({
+        position: 'center',
+        type: 'success',
+        title: `Welcome back, ${res.data.userData.name}`,
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.props.history.push('/dashboard')
     } else if (res.data.userData) {
       this.props.history.push(`/employee/${res.data.userData.id}`)
