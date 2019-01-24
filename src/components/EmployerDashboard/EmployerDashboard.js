@@ -73,7 +73,6 @@ export default class EmployerDashboard extends Component {
       <div className='background'>
         <NavLoggedIn/>
         <div className='content-display'>
-          {/* <div className='add-pay'> */}
             <div id={this.state.userData.paid === 'no' ? 'add-pay' :'employees-title-container'}>
               <span id='employees-title'>EMPLOYEES</span>
               <button 
@@ -90,14 +89,9 @@ export default class EmployerDashboard extends Component {
                 }
                 id='new-button'
               >
-                <img 
-                  src={add} 
-                  id='add-button' 
-                  alt='add-employee'
-                />              
+                <img src={add} id='add-button' alt='add-employee'/>              
               </button>
             </div>
-          {/* </div> */}
           <StripeProvider apiKey="pk_test_ptXrptuwYCDTib1zawFxwEwL">
               <div className="example">
                 <Elements>
@@ -110,7 +104,6 @@ export default class EmployerDashboard extends Component {
             </StripeProvider>
           <div id='card-box'>{mapEmployees}</div>
         </div>
-        
       </div>
     )
   }

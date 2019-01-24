@@ -46,7 +46,7 @@ class CheckoutForm extends Component {
       <div className={userData.paid === 'yes' ? "checkout-paid" : "checkout"}>
       <div>
         <p className='description'>Please pay to start your HMRX experience</p>
-        <p className='description'>Your card will be charged $2.00</p>
+        <p className='description'>Your card will be charged $20.00</p>
       </div>
         <CardElement id='card-info'/>
         <p className='description'>After Payment, adding employees will be enabled</p>

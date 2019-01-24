@@ -22,7 +22,6 @@ class NavLoggedIn extends Component {
   
   async componentDidMount(){
     const res = await axios.get('/api/user-data')
-    // console.log(res.data)
     this.setState({userData: res.data, loggedIn: res.data.loggedIn})
     this.props.getUserData(res.data)
   }
@@ -42,7 +41,7 @@ class NavLoggedIn extends Component {
     // console.log(this.state.userData)
     return (
       <div id='nav-spacing'>
-        <img src={logo} alt='HMRX logo' className='logo'/>
+        <Link to='/dashboard'><img src={logo} alt='HMRX logo' className='logo'/></Link>
         {loggedIn ? 
         <div>
           <div>

@@ -43,7 +43,7 @@ export default class Auth extends Component {
         type: 'success',
         title: `Welcome back, ${res.data.userData.name}`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1200
       })
       this.props.history.push('/dashboard')
     } else if (res.data.userData) {
