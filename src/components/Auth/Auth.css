@@ -110,9 +110,11 @@
   }
   .option-container {
     width: 350px;
+    height: 385px;
   }
   #options-spacing {
     flex-direction: column;
+    height: 100%;
   }
 }
 @media(max-width: 540px) {

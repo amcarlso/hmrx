@@ -52,7 +52,7 @@ body {
   -ms-animation-timing-function: linear;
   
   animation-name: spin;
-  animation-duration: 4000ms;
+  animation-duration: 800ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -74,5 +74,29 @@ body {
   }
   to {
       transform:rotate(360deg);
+  }
+}
+
+@media (max-width: 470px) {
+  .logo {
+    height: 60px;
+  }
+  .button-styling {
+    height: 35px;
+    width: 70px;
+    
+  }
+}
+@media (max-width: 470px) {
+  .logo {
+    height: 55px;
+  }
+  .button-styling {
+    height: 35px;
+    width: 65px;
+    font-size: 0.7rem;
+  }
+  #nav-spacing {
+    padding: 0;
   }
 }
