@@ -74,8 +74,8 @@ export default class EmployerDashboard extends Component {
       <div className='background'>
         <NavLoggedIn/>
         <div className='content-display'>
-          <div className='add-pay'>
-            <div id='employees-title-container'>
+          {/* <div className='add-pay'> */}
+            <div id={this.state.userData.paid === 'no' ? 'add-pay' :'employees-title-container'}>
               <span id='employees-title'>EMPLOYEES</span>
               <button 
                 onClick={
@@ -98,7 +98,7 @@ export default class EmployerDashboard extends Component {
                 />              
               </button>
             </div>
-          </div>
+          {/* </div> */}
           <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
               <div className="example">
                 <Elements>

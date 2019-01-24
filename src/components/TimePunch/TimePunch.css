@@ -2,12 +2,37 @@
   color: black;
   display: flex;
   justify-content: center;
-  width: 40vw;
+  width: 680px;
 }
 
 .punch-style div {
   text-align: center;
-  width: 10vw;
+  width: 170px;
   color: #287add;
   font-weight: 600;
+}
+
+@media (max-width: 775px) {
+  .punch-style {
+    width: 500px;
+  }
+  .punch-style div {
+    width: 125px;
+  }
+}
+@media (max-width: 550px) {
+  .punch-style {
+    width: 340px;
+  }
+  .punch-style div {
+    width: 85px;
+  }
+}
+@media (max-width: 445px) {
+  .punch-style {
+    width: 300px;
+  }
+  .punch-style div {
+    width: 75px;
+  }
 }

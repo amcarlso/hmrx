@@ -1,12 +1,11 @@
 const express = require('express');
 require('dotenv').config();
-const bodyParser = require('body-parser');
 const massive = require('massive');
 const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 const session = require('express-session');
 const authCtrl = require('./authController');
 const mainCtrl = require('./mainController');
-const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT, NODE_ENV} = process.env;
+const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 
 const app = express();
 

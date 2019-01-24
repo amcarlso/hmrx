@@ -25,7 +25,7 @@
 
 
 #punches-container {
-  width: 40vw;
+  width: 680px;
   margin: 0 auto;
 }
 
@@ -43,7 +43,7 @@
 
 #punches-title span {
   text-align: center;
-  width: 10vw;
+  width: 170px;
   color: #287add;
 }
 
@@ -68,4 +68,36 @@
   background-color:rgb(241, 241, 241);
   border: 2px gold solid;
   cursor: pointer;
+}
+@media (max-width: 775px) {
+  #punches-container {
+    width: 500px;
+  }
+  
+  #punches-title span {
+    width: 125px;
+  }
+}
+@media (max-width: 550px) {
+  #punches-container {
+    width: 340px;
+  }
+  
+  #punches-title span {
+    width: 85px;
+  }
+  #picture-title-styling {
+    margin: 20px 0;
+  }
+}
+@media (max-width: 445px) {
+  #punches-container {
+    width: 300px;
+  }
+  #punches-title span {
+    width: 75px;
+  }
+  #picture-title-styling h1 {
+    font-size: 1.02rem;
+  }
 }

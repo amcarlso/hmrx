@@ -89,7 +89,7 @@ export default class EmployeeDetails extends Component {
               <div>
                 {editClicked ? 
                 <div className='salary-spacing'>
-                  <input onChange={(e) => this.setState({salaryInput: e.target.value})}/>
+                  <input placeholder='salary' id='salary-input' onChange={(e) => this.setState({salaryInput: e.target.value})}/>
                   <button className='buttons' onClick={() => this.editSalary(salaryInput)}>Save</button>
                   <button className='buttons' onClick={() => this.handleCancel()}>Cancel</button>
                 </div> : 
@@ -98,7 +98,7 @@ export default class EmployeeDetails extends Component {
                 </div>}
               </div> <br/>
               <div>Username: {username}</div> <br/>
-              <div>Emdail: {email}</div>
+              <div>Email: {email}</div>
             </div>
           </div>
         </div>

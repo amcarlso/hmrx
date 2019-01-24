@@ -23,6 +23,7 @@ export default class Auth extends Component {
     const {regName, regPhone, regEmail, regUsername, regPassword} = this.state;
     let res = await axios.post('/auth/register', {name: regName, phone: regPhone, email: regEmail, username: regUsername, password: regPassword});
     if(res.data.loggedIn) {
+
       this.props.history.push('/dashboard')
     } else {
       Swal.fire({
@@ -36,22 +37,21 @@ export default class Auth extends Component {
   async login() {
     const {loginUsername, loginPassword} = this.state;
     let res = await axios.post('/auth/login', {username: loginUsername, password: loginPassword})
-    console.log(res.data)
     if(res.data.userData && res.data.userData.admin === 'yes') {
       this.props.history.push('/dashboard')
     } else if (res.data.userData) {
       this.props.history.push(`/employee/${res.data.userData.id}`)
     } else if (res.data.allGoodOne === false) {
-      Swal.fire({
-        type: 'error',
-        title: 'Oops...',
-        text: 'Username not found. Please try again.'
-      })
+      Swal.fire(
+        'Username not found.',
+        'Please try again.',
+        'question'
+      )
     } else if (res.data.allGoodTwo === false) {
       Swal.fire({
         type: 'error',
         title: 'Oops...',
-        text: 'Password incorrect. please try again.'
+        text: 'Incorrect password. please try again.'
       })
     }
     console.log(res.data)
