@@ -21,11 +21,11 @@ class CheckoutForm extends Component {
     console.log(response)
     console.log(this.props)
     if (response.ok) {Swal.fire({
-      position: 'top-end',
+      position: 'center',
       type: 'success',
       title: 'Payment Successful',
       showConfirmButton: false,
-      timer: 1500
+      timer: 1200
     })} else {
       Swal.fire({
         type: 'error',

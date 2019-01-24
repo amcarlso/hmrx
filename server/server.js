@@ -17,18 +17,17 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-console.log(NODE_ENV)
-app.use(async (req, res, next) => {
-  if(NODE_ENV === 'development' && !req.session.user){
-      const db = req.app.get('db')
-      const userData = await db.set_data()
-      req.session.user = userData[0]
-      next()
-  }else{
-      next()
-  }
-});
-
+// console.log(NODE_ENV)
+// app.use(async (req, res, next) => {
+//   if(NODE_ENV === 'development' && !req.session.user) {
+//       const db = req.app.get('db')
+//       const userData = await db.set_data()
+//       req.session.user = userData[0]
+//       next()
+//   }else {
+//       next()
+//   }
+// });
 
 massive(CONNECTION_STRING).then( db => {
   console.log('connected to db')

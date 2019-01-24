@@ -40,7 +40,7 @@ export default class TimeClock extends Component {
     } 
   }
   getEmployeeInfo() {
-    console.log(this.state)
+    console.log(this.props.match.params.employeeid)
     axios.get(`/api/employees/${this.props.match.params.employeeid}`)
     .then( res => {
       this.setState({employeeInfo: res.data})
@@ -48,7 +48,9 @@ export default class TimeClock extends Component {
     })
   }
   punchIn() {
+    console.log(this.state.employeeInfo.id)
     let punchIn = moment().format("MM/DD/YYYY hh:mm A");
+    console.log(punchIn)
     axios.post(`/api/punches/${this.state.employeeInfo.id}`, {punchIn: punchIn})
     .then( res => {
       this.getPunches();
@@ -81,7 +83,6 @@ export default class TimeClock extends Component {
       )
     })
     //let punchIn = moment().format("MM/DD/YYYY hh:mm A"); //format just determines how you will render the string
-    console.log(this.state.punches)
     const {employeeInfo} = this.state;
     return(
       <div className='background-clock'>

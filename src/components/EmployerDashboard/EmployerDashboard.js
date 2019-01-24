@@ -76,7 +76,7 @@ export default class EmployerDashboard extends Component {
         <div className='content-display'>
           <div className='add-pay'>
             <div id='employees-title-container'>
-              <span id='employees-title'>Employees</span>
+              <span id='employees-title'>EMPLOYEES</span>
               <button 
                 onClick={
                   () => {
@@ -98,8 +98,8 @@ export default class EmployerDashboard extends Component {
                 />              
               </button>
             </div>
-            
-            <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+          </div>
+          <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
               <div className="example">
                 <Elements>
                   <CheckoutForm 
@@ -109,7 +109,6 @@ export default class EmployerDashboard extends Component {
                 </Elements>
               </div>
             </StripeProvider>
-          </div>
           <div id='card-box'>{mapEmployees}</div>
         </div>
         
