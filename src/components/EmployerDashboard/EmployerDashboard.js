@@ -28,9 +28,10 @@ export default class EmployerDashboard extends Component {
   async getUserData() {
     try {
     const userData = await axios.get('/api/user-data');
+    console.log(userData)
     if(userData.data) {
-
       this.setState({userData: userData.data})
+      console.log(this.state.userData)
       await this.getEmployees();
     }
     } catch(error) {
@@ -46,6 +47,7 @@ export default class EmployerDashboard extends Component {
 
   async getEmployees() {
     const response = await axios.get('/api/employees')
+    console.log(response.data)
     this.setState({employees: response.data})
   }
 

@@ -6,7 +6,7 @@ module.exports = {
     const employerId = req.session.user.id;
     db.get_all_employees({id: employerId})
     .then( response => {
-      // console.log(response)
+      console.log(response)
       res.status(200).send(response)
     })
     .catch( err => {
@@ -34,6 +34,7 @@ module.exports = {
     })
   },
   getUser: (req, res) => {
+    console.log(req.session.user)
     if(req.session.user) {
       res.status(200).send(req.session.user)
     } else {

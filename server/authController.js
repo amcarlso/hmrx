@@ -100,7 +100,7 @@ module.exports = {
   },
   logout: (req, res) => {
     req.session.destroy();
-    res.redirect({REACT_APP_LOGIN});
+    res.redirect(`${REACT_APP_LOGIN}/#/`);
     // console.log(req.session.user)
   },
   charge: async (req, res) => {

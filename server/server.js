@@ -29,9 +29,7 @@ app.use(session({
 //   }
 // });    THIS CAN BE USED DURING DEVELOPMENT TO STAY LOGGED IN
 
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+
 
 massive(CONNECTION_STRING).then( db => {
   console.log('connected to db')
@@ -55,3 +53,7 @@ app.put('/api/user-data/:id', mainCtrl.editPaid);
 app.get('/api/punches/:id', mainCtrl.getPunches);
 app.post('/api/punches/:id', mainCtrl.addPunchIn);
 app.put('/api/punches/:id', mainCtrl.addPunchOut);
+
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
