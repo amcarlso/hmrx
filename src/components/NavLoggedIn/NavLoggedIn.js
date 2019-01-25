@@ -38,7 +38,6 @@ class NavLoggedIn extends Component {
 
   render() {
     const {loggedIn} = this.state;
-    console.log(this.state.loggedIn)
     return (
       <div id='nav-spacing'>
         <Link to='/dashboard'><img src={logo} alt='HMRX logo' className='logo'/></Link>

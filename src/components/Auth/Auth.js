@@ -60,7 +60,6 @@ export default class Auth extends Component {
         text: 'Incorrect password. please try again.'
       })
     }
-    console.log(res.data)
   }
 
   render(){

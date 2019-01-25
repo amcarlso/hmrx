@@ -39,6 +39,14 @@ export default class NewEmployee extends Component {
     const {name, username, password, email, image, salary, position} = this.state;
     axios.post('/api/employees', {name: name, username: username, password: password, email: email, image: image, salary: salary, position: position})
     .then( res => {
+      if(res.data.message === 'username already in use') {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Username Taken. Please select another username.'
+        })
+        this.props.history.push('/dashboard')
+      }
       this.props.history.push('/dashboard')
     })
   }
