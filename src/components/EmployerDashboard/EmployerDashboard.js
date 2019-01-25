@@ -28,7 +28,6 @@ export default class EmployerDashboard extends Component {
   async getUserData() {
     try {
     const userData = await axios.get('/api/user-data');
-    console.log(userData)
     if(userData.data) {
       this.setState({userData: userData.data})
       console.log(this.state.userData)

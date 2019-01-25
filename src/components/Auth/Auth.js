@@ -23,7 +23,6 @@ export default class Auth extends Component {
     const {regName, regPhone, regEmail, regUsername, regPassword} = this.state;
     let res = await axios.post('/auth/register', {name: regName, phone: regPhone, email: regEmail, username: regUsername, password: regPassword});
     if(res.data.loggedIn) {
-
       this.props.history.push('/dashboard')
     } else {
       Swal.fire({

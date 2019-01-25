@@ -11,6 +11,7 @@ export default class NewEmployee extends Component {
     super(props);
 
     this.state = {
+      userData: {},
       name: '',
       username: '',
       password: '',

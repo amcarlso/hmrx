@@ -1,2 +1,2 @@
-select id, name, username, admin, email from users
+select id, name, username, admin, email, paid from users
 where id = ${id};
