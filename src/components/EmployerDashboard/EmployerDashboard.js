@@ -29,7 +29,7 @@ export default class EmployerDashboard extends Component {
     try {
     const userData = await axios.get('/api/user-data');
     if(userData.data) {
-      this.setState({userData: userData.data})
+      this.setState({userData: userData.data.userData})
       await this.getEmployees();
     }
     } catch(error) {
@@ -53,7 +53,8 @@ export default class EmployerDashboard extends Component {
   }
   
   render(){
-    const {userData} = this.state;    
+    const {userData} = this.state;  
+    console.log(userData)  
     let mapEmployees = this.state.employees.map(employee => {
       return(
           <EmployeeCard

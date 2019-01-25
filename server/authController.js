@@ -71,9 +71,9 @@ module.exports = {
       to: `+1${phone}`,
       body: 'Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees'
     })
-    .then(res => {
-      console.log(res)
-    })
+    // .then(res => {
+    //   console.log(res)
+    // })
     //
   },
   login: async (req, res) => {

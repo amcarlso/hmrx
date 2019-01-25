@@ -22,7 +22,8 @@ class NavLoggedIn extends Component {
   
   async componentDidMount(){
     const res = await axios.get('/api/user-data')
-    this.setState({userData: res.data, loggedIn: res.data.loggedIn})
+    console.log(res)
+    this.setState({userData: res.data.userData, loggedIn: res.data.loggedIn})
     this.props.getUserData(res.data)
   }
 
@@ -38,13 +39,14 @@ class NavLoggedIn extends Component {
 
   render() {
     const {loggedIn} = this.state;
+    console.log(loggedIn)
     return (
       <div id='nav-spacing'>
         <Link to='/dashboard'><img src={logo} alt='HMRX logo' className='logo'/></Link>
         {loggedIn ? 
         <div>
           <div>
-            <span id='welcome'>{`Welcome, ${this.props.user.name}`}</span>
+            <span id='welcome'>{`Welcome, ${this.state.userData.name}`}</span>
               <Link to='/'><button onClick={() => this.clearUser()} className='button-styling'>Log Out</button></Link>
           </div>
         </div> : null}

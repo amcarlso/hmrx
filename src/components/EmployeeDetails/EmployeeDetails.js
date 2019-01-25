@@ -26,7 +26,7 @@ export default class EmployeeDetails extends Component {
       const userData = await axios.get('/api/user-data')
       console.log(userData.data)
       if(userData.data) {
-        this.setState({userInfo: userData.data})
+        this.setState({userInfo: userData.data.userData})
         await this.getEmployeeInfo()
       }
     } catch(error) {
@@ -70,6 +70,7 @@ export default class EmployeeDetails extends Component {
 
   render(){
     const {editClicked, salaryInput, userInfo} = this.state;
+    console.log(userInfo)
     const { name, username, email, image_url, position, salary } = this.state.employeeInfo;
     return(
       <div className='background'>
