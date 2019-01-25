@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 require('dotenv').config();
 const massive = require('massive');
@@ -8,6 +9,7 @@ const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 
 const app = express();
 
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(express.json());
 app.use(require("body-parser").text());
 app.use(session({
@@ -26,6 +28,10 @@ app.use(session({
 //       next()
 //   }
 // });    THIS CAN BE USED DURING DEVELOPMENT TO STAY LOGGED IN
+
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 massive(CONNECTION_STRING).then( db => {
   console.log('connected to db')

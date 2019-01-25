@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const {EMAIL, PASSWORD, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER, SECRET_KEY} = process.env
+const {EMAIL, PASSWORD, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER, SECRET_KEY, REACT_APP_LOGIN} = process.env
 const nodemailer = require('nodemailer');
 const client = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 const stripe = require("stripe")(SECRET_KEY);
@@ -100,7 +100,7 @@ module.exports = {
   },
   logout: (req, res) => {
     req.session.destroy();
-    res.redirect('http://localhost:3000/#/');
+    res.redirect({REACT_APP_LOGIN});
     // console.log(req.session.user)
   },
   charge: async (req, res) => {

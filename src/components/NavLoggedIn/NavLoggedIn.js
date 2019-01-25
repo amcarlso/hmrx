@@ -46,9 +46,7 @@ class NavLoggedIn extends Component {
         <div>
           <div>
             <span id='welcome'>{`Welcome, ${this.props.user.name}`}</span>
-            {/* <a href='http://localhost:4321/auth/logout'> */}
               <Link to='/'><button onClick={() => this.clearUser()} className='button-styling'>Log Out</button></Link>
-            {/* </a> */}
           </div>
         </div> : null}
       </div>
