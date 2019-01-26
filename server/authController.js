@@ -95,7 +95,6 @@ module.exports = {
       paid: userUsername[0].paid,
       loggedIn: true
     };
-    console.log(req.session.user)
     res.status(200).send({message:'logged in', userData: req.session.user, loggedIn: true})
   },
   logout: (req, res) => {

@@ -24,7 +24,6 @@ export default class TimeClock extends Component {
   async componentDidMount() {
     try {
       const userData = await axios.get('/api/user-data');
-      console.log(userData.data)
       if(userData.data) {
         await this.setState({userInfo: userData.data});
         await this.getEmployeeInfo();
