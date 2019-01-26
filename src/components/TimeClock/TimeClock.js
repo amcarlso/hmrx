@@ -39,7 +39,6 @@ export default class TimeClock extends Component {
     } 
   }
   getEmployeeInfo() {
-    console.log(this.props.match.params.employeeid)
     axios.get(`/api/employees/${this.props.match.params.employeeid}`)
     .then( res => {
       this.setState({employeeInfo: res.data})
@@ -47,9 +46,7 @@ export default class TimeClock extends Component {
     })
   }
   punchIn() {
-    console.log(this.state.employeeInfo.id)
     let punchIn = moment().format("MM/DD/YYYY hh:mm A");
-    console.log(punchIn)
     axios.post(`/api/punches/${this.state.employeeInfo.id}`, {punchIn: punchIn})
     .then( res => {
       this.getPunches();
@@ -61,16 +58,13 @@ export default class TimeClock extends Component {
     .then( res => {
       this.getPunches();
     })
-    console.log(this.state.punches)
   }
   getPunches() {
-    console.log(this.state)
     axios.get(`/api/punches/${this.state.employeeInfo.id}`)
     .then( res => this.setState({punches: res.data}))
   }
 
   render(){
-    console.log(this.state.punches)
     let mapPunches = this.state.punches.map( punch => {
       return(
         <TimePunch 

@@ -18,8 +18,6 @@ class CheckoutForm extends Component {
       headers: {"Content-Type": "text/plain"},
       body: token.id
     });
-    console.log(response)
-    console.log(this.props)
     if (response.ok) {Swal.fire({
       position: 'center',
       type: 'success',
