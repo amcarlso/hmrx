@@ -43,6 +43,7 @@ export default class TimeClock extends Component {
     .then( res => {
       this.setState({employeeInfo: res.data})
       this.getPunches()
+      console.log(this.state.employeeInfo)
     })
   }
   punchIn() {

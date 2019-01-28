@@ -6,7 +6,7 @@ export default function EmployeeCard(props) {
   return(
       <div id='card-container'>
         <div>
-          <button onClick={() => props.deleteUserFn(props.employeeId)} id='delete-style'>X</button>
+          <button onClick={() => props.deleteUserFn(props.employeeId, props.id)} id='delete-style'>X</button>
         </div>
         <Link className='link-style' to={`/employee/${props.employeeId}`}>
         <div id='card-content-style'>
@@ -16,6 +16,5 @@ export default function EmployeeCard(props) {
         </div>
         </Link>
       </div>
-    
   )
 }

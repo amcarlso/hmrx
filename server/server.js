@@ -45,7 +45,7 @@ app.get('/auth/logout', authCtrl.logout);
 app.get('/api/employees', mainCtrl.getAllEmployees);
 app.post('/api/employees', mainCtrl.addEmployee);
 app.get('/api/user-data', mainCtrl.getUser);
-app.delete('/api/employees/:id', mainCtrl.deleteEmployee);
+app.delete('/api/employees/:id/:employeeId', mainCtrl.deleteEmployee);
 app.get('/api/employees/:id', mainCtrl.getEmployeeInfo);
 app.put('/api/employees/:id', mainCtrl.editSalary);
 app.post("/charge", authCtrl.charge);

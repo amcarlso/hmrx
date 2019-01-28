@@ -47,8 +47,9 @@ export default class EmployerDashboard extends Component {
     this.setState({employees: response.data})
   }
 
-  async deleteUser(id) {
-    const response = await axios.delete(`/api/employees/${id}`)
+  async deleteUser(id, employeeId) {
+    console.log(id)
+    const response = await axios.delete(`/api/employees/${id}/${employeeId}`)
       this.setState({employees: response.data})
   }
   
