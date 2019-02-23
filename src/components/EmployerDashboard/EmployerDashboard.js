@@ -48,7 +48,6 @@ export default class EmployerDashboard extends Component {
   }
 
   async deleteUser(id, employeeId) {
-    console.log(id)
     const response = await axios.delete(`/api/employees/${id}/${employeeId}`)
       this.setState({employees: response.data})
   }
@@ -73,7 +72,10 @@ export default class EmployerDashboard extends Component {
         <NavLoggedIn/>
         <div className='content-display'>
             <div id={this.state.userData.paid === 'no' ? 'add-pay' :'employees-title-container'}>
-              <span id='employees-title'>EMPLOYEES</span>
+              <div className='heading-text'>
+                <span className='disclaimer'>**PLEASE DO NOT ENTER REAL CARD INFO. USE EXAMPLE: 4242 4242 4242 4242 04/20 99999**</span>
+                <span id='employees-title'>EMPLOYEES</span>
+              </div>
               <button 
                 onClick={
                   () => {

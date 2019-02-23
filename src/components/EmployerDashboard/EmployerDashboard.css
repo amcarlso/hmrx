@@ -18,6 +18,13 @@
   color: #287add;
 }
 
+.heading-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 35%;
+}
+
 #employees-title {
   font-size: 2.8rem;
   font-family: 'Montserrat', sans-serif;
@@ -46,6 +53,7 @@
 
 #add-button {
   height: 40px;
+  margin-top: 33px;
 }
 
 #add-pay {
@@ -68,13 +76,12 @@
     height: 34px;
   }
 }
-/* @media (max-width: 755px) {
+
+@media (max-width: 448px) {
   #employees-title {
-    font-size: 1.8rem;
-    letter-spacing: 4px;
+    font-size: 1.34rem;
+    letter-spacing: 3px;
   }
-  #add-button {
-    height: 30px;
-  }
-} */
+}
+
 

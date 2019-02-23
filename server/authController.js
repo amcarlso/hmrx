@@ -5,7 +5,6 @@ const client = require("twilio")(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 const stripe = require("stripe")(SECRET_KEY);
 require('dotenv').config();
 
-
 module.exports = {
   register: async (req, res) => {
     const {name, username, password, phone, email} = req.body;
@@ -63,7 +62,6 @@ module.exports = {
         }
       })
     })
-    //
     //TWILIO
     client.messages
     .create({
@@ -71,10 +69,6 @@ module.exports = {
       to: `+1${phone}`,
       body: 'Thank you for signing up for HMRX. No payment is required at this time. You will be prompted to pay when you attempt to add employees'
     })
-    // .then(res => {
-    //   console.log(res)
-    // })
-    //
   },
   login: async (req, res) => {
     const db = req.app.get('db');
@@ -100,7 +94,6 @@ module.exports = {
   logout: (req, res) => {
     req.session.destroy();
     res.redirect(`${REACT_APP_LOGIN}/#/`);
-    // console.log(req.session.user)
   },
   charge: async (req, res) => {
     try {
