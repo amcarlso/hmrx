@@ -45,7 +45,7 @@ module.exports = {
   deleteEmployee: async (req, res) => {
     const db = req.app.get('db');
     const {id, employeeId} = req.params;
-    console.log(id, employeeId)
+    console.log(`controller hit`, id, employeeId)
     let res0 = await db.delete_punches({employeeId: employeeId})
     let res1 = await db.delete_info({userId: id});
     let res2 = await db.delete_user({userId: id});
