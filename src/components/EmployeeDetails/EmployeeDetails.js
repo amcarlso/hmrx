@@ -24,7 +24,6 @@ export default class EmployeeDetails extends Component {
   async componentDidMount() {
     try {
       const userData = await axios.get('/api/user-data')
-      console.log(userData.data)
       if(userData.data) {
         this.setState({userInfo: userData.data.userData})
         await this.getEmployeeInfo()
@@ -37,7 +36,10 @@ export default class EmployeeDetails extends Component {
         text: 'You are not logged in. Please Log in.'
       })
       this.props.history.push('/')
-    } 
+    }
+    if (this.state.editClicked) {
+      document.getElementById('salary-input').focus();
+    }
   }
   
   handleToggleEdit() {
@@ -52,14 +54,13 @@ export default class EmployeeDetails extends Component {
   axios.get(`/api/employees/${this.props.match.params.employeeid}`)
     .then( res => {
       this.setState({employeeInfo: res.data})
-      console.log(res.data)
     })
   }
   editSalary(editedSalary) {
     axios.put(`/api/employees/${this.props.match.params.employeeid}`, {salary: editedSalary})
     .then( res => {
       this.setState({employeeInfo: res.data})
-      console.log({message: `Here's ${res.data.name}'s updated salary: ${res.data.salary}/hour`})
+      // console.log({message: `Here's ${res.data.name}'s updated salary: ${res.data.salary}/hour`})
     });
     this.handleToggleEdit();
   }

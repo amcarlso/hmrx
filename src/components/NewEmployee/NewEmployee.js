@@ -33,6 +33,7 @@ export default class NewEmployee extends Component {
       })
         this.props.history.push('/')
     }
+    document.getElementById('name-input').focus();
   }
 
   addEmployee() {
@@ -62,7 +63,7 @@ export default class NewEmployee extends Component {
           <div>
             <span id='subject-title'>Name:</span>
             <br/>
-            <input placeholder='Name' onChange={(e) => this.setState({name: e.target.value})} />
+            <input id='name-input' placeholder='Name' onChange={(e) => this.setState({name: e.target.value})} />
             <br/>
             <span id='subject-title'>Username:</span>
             <br/>

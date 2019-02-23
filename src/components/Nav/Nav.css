@@ -60,3 +60,9 @@ body {
     padding: 0;
   }
 }
+
+@media (max-width: 350px) {
+  #nav-spacing {
+    margin-bottom: 0;
+  }
+}

@@ -23,6 +23,7 @@
   flex-direction: column;
   align-items: center;
   max-width: 35%;
+  margin: 1em;
 }
 
 #employees-title {
@@ -74,6 +75,16 @@
   }
   #add-button {
     height: 34px;
+  }
+}
+
+@media (max-width: 550px) {
+  .disclaimer {
+    font-size: 0.7rem;
+  }
+  #add-button {
+    height: 30px;
+    margin-top: 47px;
   }
 }
 

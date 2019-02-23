@@ -42,14 +42,15 @@ export default class EmployerDashboard extends Component {
     }
   }
 
-  async getEmployees() {
+  getEmployees = async () => {
     const response = await axios.get('/api/employees')
     this.setState({employees: response.data})
   }
 
-  async deleteUser(id, employeeId) {
-    const response = await axios.delete(`/api/employees/${id}/${employeeId}`)
-      this.setState({employees: response.data})
+  deleteUser = async (id, employeeId, event) => {
+    event.stopPropagation();
+    const response = await axios.delete(`/api/employees/${id}/${employeeId}`);
+    this.setState({employees: response.data});
   }
   
   render(){
@@ -73,7 +74,7 @@ export default class EmployerDashboard extends Component {
         <div className='content-display'>
             <div id={this.state.userData.paid === 'no' ? 'add-pay' :'employees-title-container'}>
               <div className='heading-text'>
-                <span className='disclaimer'>**PLEASE DO NOT ENTER REAL CARD INFO. USE EXAMPLE: 4242 4242 4242 4242 04/20 99999**</span>
+                {this.state.userData.paid === 'no' ? <span className='disclaimer'>**PLEASE DO NOT ENTER REAL CARD INFO. USE EXAMPLE: 4242 4242 4242 4242 04/20 99999**</span> : null}
                 <span id='employees-title'>EMPLOYEES</span>
               </div>
               <button 
