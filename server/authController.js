@@ -55,7 +55,7 @@ module.exports = {
       }
       transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
-          return console.log(err)
+          return console.log('unable to send message')
         } else {
           console.log('Message Sent')
         }

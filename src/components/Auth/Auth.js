@@ -3,6 +3,8 @@ import './Auth.css'
 import axios from 'axios';
 import Nav from '../Nav/Nav';
 import Swal from 'sweetalert2';
+import Register from './Register';
+import Login from './Login';
 
 export default class Auth extends Component {
   constructor(props) {
@@ -15,15 +17,27 @@ export default class Auth extends Component {
       regPhone: '',
       regEmail: '',
       regUsername: '',
-      regPassword: ''
+      regPassword: '',
+      registerToggle: false,
+      loginToggle: false
     }
   }
 
-  componentDidMount() {
-    document.getElementById('username-input').focus();
+  handleLogToggle = () => {
+    this.setState({
+      registerToggle: false,
+      loginToggle: !this.state.loginToggle
+    })
   }
 
-  async register() {
+  handleRegToggle = () => {
+    this.setState({
+      loginToggle: false,
+      registerToggle: !this.state.registerToggle
+    })
+  }
+
+  register = async () => {
     const {regName, regPhone, regEmail, regUsername, regPassword} = this.state;
     let res = await axios.post('/auth/register', {name: regName, phone: regPhone, email: regEmail, username: regUsername, password: regPassword});
     if(res.data.loggedIn) {
@@ -37,7 +51,7 @@ export default class Auth extends Component {
     }
   }
 
-  async login() {
+  login = async () => {
     const {loginUsername, loginPassword} = this.state;
     let res = await axios.post('/auth/login', {username: loginUsername, password: loginPassword})
     if(res.data.userData && res.data.userData.admin === 'yes') {
@@ -78,37 +92,27 @@ export default class Auth extends Component {
     }
   }
 
+  handleInput = (prop, e) => {
+    this.setState({
+      [prop]: e.target.value
+    })
+  }
+
   render(){
+    const {loginToggle, registerToggle} = this.state;
     return(
     <div id='background'>
-      <Nav />
+      <Nav regTogFn={this.handleRegToggle} logTogFn={this.handleLogToggle} />
       <div id='header'>
           <h1>Human Resources Simplified</h1>
         </div>
       {/* <div className='auth-content-display'> */}
         <div id='options-spacing'>
-          <div className='option-container'>
-          <p id='sign-in'>Sign In</p>
-          <input id='username-input' onKeyDown={(e) => this.handleKeyDownLogin(e)} placeholder='username' onChange={(e) => this.setState({loginUsername: e.target.value})} />
-          <br/>
-          <input onKeyDown={(e) => this.handleKeyDownLogin(e)} placeholder='password' onChange={(e) => this.setState({loginPassword: e.target.value})} type='password' />
-          <br/>
-          <button className='button-styling' onClick={() => this.login()}>Enter</button>
-          </div>
-
-          <div className='option-container'>
-            <p id='register'>Register</p>
-            <input onKeyDown={(e) => this.handleKeyDownRegister(e)} placeholder='name' onChange={(e) => this.setState({regName: e.target.value})} />
-            <br/>
-            <input onKeyDown={(e) => this.handleKeyDownRegister(e)} placeholder='username' onChange={(e) => this.setState({regUsername: e.target.value})} />
-            <br/>
-            <input onKeyDown={(e) => this.handleKeyDownRegister(e)} placeholder='password' onChange={(e) => this.setState({regPassword: e.target.value})} type='password' />
-            <br/>
-            <input onKeyDown={(e) => this.handleKeyDownRegister(e)} placeholder='phone ##########' onChange={(e) => this.setState({regPhone: e.target.value})} />
-            <br/>
-            <input onKeyDown={(e) => this.handleKeyDownRegister(e)} placeholder='email@email.com' onChange={(e) => this.setState({regEmail: e.target.value})} />
-            <button className='button-styling' onClick={() => this.register()}>Enter</button>
-          </div>
+          {!loginToggle && !registerToggle ? null : registerToggle && !loginToggle ? <Register regFn={this.register} keyDownReg={this.handleKeyDownRegister} regTogFn={this.handleRegToggle} handleInput={this.handleInput}/> : (
+            loginToggle && !registerToggle ? <Login  logFn={this.login} keyDownLog={this.handleKeyDownLogin} logTogFn={this.handleLogToggle} handleInput={this.handleInput}/> : null)
+          }
+          
+          
         </div>
       {/* </div> */}
     </div>

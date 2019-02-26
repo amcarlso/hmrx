@@ -1,12 +1,11 @@
 #nav-spacing {
-  height: 70px;
+  height: 4.5rem;
   width: 100%;
   padding: 5px 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: none;
-  margin-bottom: 30px;
 }
 
 #nav-spacing:hover {
@@ -15,6 +14,30 @@
 
 body {
   color: #287add;
+}
+
+.user-options {
+  display: flex;
+}
+
+.user-button {
+  height: 2rem;
+  width: 5rem;
+  background: #287add;
+  margin: 0 1rem;
+  text-align: center;
+  color: rgb(241, 238, 238);
+  line-height: 1.9rem;
+  border-radius: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  }
+
+.user-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  border: 0.5px gold solid;
+  transition: 0.15s;
+
 }
 
 .button-styling {
